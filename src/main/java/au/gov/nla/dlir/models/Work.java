@@ -24,7 +24,6 @@ public class Work  implements Comparable<Object>{
     private String subUnitNo = "";
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=ISSUE_DATE_PATTERN)
     private Date issueDate;
-    private String link;
     private String holdingNumber;
     private String pid;
     private String dcmWorkPid;
@@ -103,14 +102,6 @@ public class Work  implements Comparable<Object>{
 
     public void setSubType(String subType) {
         this.subType = subType;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     public String getPid() {
