@@ -63,6 +63,7 @@ public class Work  implements Comparable<Object>{
     private Parent parent;
     private Children children;
     private List<Copies> copies;
+    private List<String> constraints;
     
     /**
      * Returns the BibData of this Object or
@@ -496,4 +497,11 @@ public class Work  implements Comparable<Object>{
         this.copies = copies;
     }
 
+    public List<String> getConstraints() {
+        return constraints;
+    }
+
+    public void setConstraints(List<String> constraints) {
+        this.constraints = constraints;
+    }
 }
