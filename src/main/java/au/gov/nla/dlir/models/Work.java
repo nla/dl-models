@@ -64,6 +64,7 @@ public class Work  implements Comparable<Object>{
     private Children children;
     private List<Copies> copies;
     private List<String> constraints;
+    private int edgeOrder;
     
     /**
      * Returns the BibData of this Object or
@@ -503,5 +504,14 @@ public class Work  implements Comparable<Object>{
 
     public void setConstraints(List<String> constraints) {
         this.constraints = constraints;
+    }
+
+    public int getEdgeOrder() {
+        return edgeOrder;
+    }
+
+    public Work setEdgeOrder(int edgeOrder) {
+        this.edgeOrder = edgeOrder;
+        return this;
     }
 }
