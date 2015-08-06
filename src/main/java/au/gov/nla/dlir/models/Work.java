@@ -64,6 +64,7 @@ public class Work  implements Comparable<Object>{
     private Children children;
     private List<Copies> copies;
     private List<String> constraints;
+    private int rowIndex;
     
     /**
      * Returns the BibData of this Object or
@@ -503,5 +504,14 @@ public class Work  implements Comparable<Object>{
 
     public void setConstraints(List<String> constraints) {
         this.constraints = constraints;
+    }
+
+    public int getRowIndex() {
+        return rowIndex;
+    }
+
+    public Work setRowIndex(int rowIndex) {
+        this.rowIndex = rowIndex;
+        return this;
     }
 }
