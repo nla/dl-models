@@ -65,7 +65,9 @@ public class Work  implements Comparable<Object>{
     private List<Copies> copies;
     private List<String> constraints;
     private int rowIndex;
-    
+    private String previousSibling;
+    private String nextSibling;
+
     /**
      * Returns the BibData of this Object or
      * if null returns the BibData of the Parent
@@ -356,7 +358,7 @@ public class Work  implements Comparable<Object>{
     
     @Override
     public int compareTo(Object object) {               
-        Work work = (Work)object;                     
+        Work work = (Work)object;
         String displayOrder1 = (displayOrder == null ? "" : displayOrder);
         String displayOrder2 = (work.getDisplayOrder() == null ? "" : work.getDisplayOrder());
        return NaturalSort.compareNaturalIgnoreCaseAscii(displayOrder1, displayOrder2);        
@@ -510,8 +512,23 @@ public class Work  implements Comparable<Object>{
         return rowIndex;
     }
 
-    public Work setRowIndex(int rowIndex) {
+    public void setRowIndex(int rowIndex) {
         this.rowIndex = rowIndex;
-        return this;
+    }
+
+    public String getPreviousSibling() {
+        return previousSibling;
+    }
+
+    public void setPreviousSibling(String previousSibling) {
+        this.previousSibling = previousSibling;
+    }
+
+    public String getNextSibling() {
+        return nextSibling;
+    }
+
+    public void setNextSibling(String nextSibling) {
+        this.nextSibling = nextSibling;
     }
 }
