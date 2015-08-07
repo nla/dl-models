@@ -48,6 +48,7 @@ public class Work  implements Comparable<Object>{
     private String firstChild;
     private String firstChildAccessConditions = "Unrestricted";
     private Boolean firstChildAllowHighResDownload = false;
+    private Boolean displayTitlePage = false;
     private String commentsExternal;    
     private String bibliography;
     private String digitalStatus;
@@ -353,7 +354,14 @@ public class Work  implements Comparable<Object>{
         this.firstChildAllowHighResDownload = firstChildAllowHighResDownload;
     }
     
-    
+    public Boolean getDisplayTitlePage() {
+        return displayTitlePage;
+    }
+
+    public void setDisplayTitlePage(Boolean displayTitlePage) {
+        this.displayTitlePage = displayTitlePage;
+    }
+
     @Override
     public int compareTo(Object object) {               
         Work work = (Work)object;                     
