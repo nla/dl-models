@@ -20,6 +20,7 @@ public class Page {
     private String digitalStatus;
     private String title;
     private String holdingNumber;
+    private String commentsExternal;
 
     public String getHoldingNumber() {
         return holdingNumber;
@@ -147,5 +148,13 @@ public class Page {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCommentsExternal() {
+        return commentsExternal;
+    }
+
+    public void setCommentsExternal(String commentsExternal) {
+        this.commentsExternal = commentsExternal;
     }
 }
