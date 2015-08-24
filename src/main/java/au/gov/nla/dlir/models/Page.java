@@ -150,7 +150,11 @@ public class Page {
         this.title = title;
     }
 
-    public String getCommentsExternal() { return commentsExternal; }
+    public String getCommentsExternal() {
+        return commentsExternal;
+    }
 
-    public void setCommentsExternal(String commentsExternal) { this.commentsExternal = commentsExternal; }
+    public void setCommentsExternal(String commentsExternal) {
+        this.commentsExternal = commentsExternal;
+    }
 }
