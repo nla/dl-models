@@ -68,6 +68,7 @@ public class Work  implements Comparable<Object>{
     private int rowIndex;
     private String previousSibling;
     private String nextSibling;
+    private Boolean isMissingPage = false;
 
     /**
      * Returns the BibData of this Object or
@@ -77,14 +78,14 @@ public class Work  implements Comparable<Object>{
     public BibData resolveBibData() {
         if (getBibData() != null) {
             return getBibData();
-        } else if (getParent() != null && 
+        } else if (getParent() != null &&
                 getParent().getBibData() != null) {
             return getParent().getBibData();
         }
-        
+
         return null;
     }
-    
+
     public String getId() {
         return id;
     }
@@ -140,7 +141,7 @@ public class Work  implements Comparable<Object>{
     public void setAccessConditions(String accessConditions) {
         this.accessConditions = accessConditions;
     }
-    
+
     public Boolean getAllowHighResDownload() {
         return allowHighResDownload;
     }
@@ -235,15 +236,15 @@ public class Work  implements Comparable<Object>{
 
     public void setDisplayOrder(String displayOrder) {
         this.displayOrder = displayOrder;
-    }      
+    }
+
     public String getCreator() {
         return creator;
     }
-
     public void setCreator(String creator) {
         this.creator = creator;
     }
-    
+
     public String getRepository() {
         return repository;
     }
@@ -315,35 +316,35 @@ public class Work  implements Comparable<Object>{
     public void setRepresentativeWork(String representativeWork) {
         this.representativeWork = representativeWork;
     }
-    
+
     public String getRepresentativeWorkAccessConditions() {
         return representativeWorkAccessConditions;
     }
-    
+
     public void setRepresentativeWorkAccessConditions(String representativeWorkAccessConditions) {
         this.representativeWorkAccessConditions = representativeWorkAccessConditions;
     }
-    
+
     public Boolean getRepresentativeWorkAllowHighResDownload() {
         return representativeWorkAllowHighResDownload;
     }
-    
+
     public void setRepresentativeWorkAllowHighResDownload(Boolean representativeWorkAllowHighResDownload) {
         this.representativeWorkAllowHighResDownload = representativeWorkAllowHighResDownload;
     }
-    
+
     public String getFirstChild() {
         return firstChild;
     }
-    
+
     public void setFirstChild(String firstChild) {
         this.firstChild = firstChild;
     }
-    
+
     public String getFirstChildAccessConditions() {
         return firstChildAccessConditions;
     }
-    
+
     public void setFirstChildAccessConditions(String firstChildAccessConditions) {
         this.firstChildAccessConditions = firstChildAccessConditions;
     }
@@ -351,11 +352,11 @@ public class Work  implements Comparable<Object>{
     public Boolean getFirstChildAllowHighResDownload() {
         return firstChildAllowHighResDownload;
     }
-    
+
     public void setFirstChildAllowHighResDownload(Boolean firstChildAllowHighResDownload) {
         this.firstChildAllowHighResDownload = firstChildAllowHighResDownload;
     }
-    
+
     public Boolean getDisplayTitlePage() {
         return displayTitlePage;
     }
@@ -365,11 +366,11 @@ public class Work  implements Comparable<Object>{
     }
 
     @Override
-    public int compareTo(Object object) {               
+    public int compareTo(Object object) {
         Work work = (Work)object;
         String displayOrder1 = (displayOrder == null ? "" : displayOrder);
         String displayOrder2 = (work.getDisplayOrder() == null ? "" : work.getDisplayOrder());
-       return NaturalSort.compareNaturalIgnoreCaseAscii(displayOrder1, displayOrder2);        
+       return NaturalSort.compareNaturalIgnoreCaseAscii(displayOrder1, displayOrder2);
     }
 
     public String getDcmWorkPid() {
@@ -378,8 +379,8 @@ public class Work  implements Comparable<Object>{
 
     public void setDcmWorkPid(String dcmWorkPid) {
         this.dcmWorkPid = dcmWorkPid;
-    }    
-    
+    }
+
     public String getSensitiveMaterial() {
         return sensitiveMaterial;
     }
@@ -411,7 +412,7 @@ public class Work  implements Comparable<Object>{
     public void setCommentsExternal(String commentsExternal) {
         this.commentsExternal = commentsExternal;
     }
- 
+
     public String getBibliography() {
         return bibliography;
     }
@@ -538,5 +539,13 @@ public class Work  implements Comparable<Object>{
 
     public void setNextSibling(String nextSibling) {
         this.nextSibling = nextSibling;
+    }
+
+    public Boolean getIsMissingPage() {
+        return isMissingPage;
+    }
+
+    public void setIsMissingPage(Boolean isMissingPage) {
+        this.isMissingPage = isMissingPage;
     }
 }
