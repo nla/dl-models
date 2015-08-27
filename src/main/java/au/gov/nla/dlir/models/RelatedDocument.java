@@ -1,7 +1,10 @@
 package au.gov.nla.dlir.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import au.gov.nla.dlir.util.NaturalSort;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class RelatedDocument implements Comparable<Object> {
     private String id;
     private String copyRoleCode;
