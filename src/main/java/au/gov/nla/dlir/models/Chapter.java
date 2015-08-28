@@ -2,7 +2,7 @@ package au.gov.nla.dlir.models;
 
 import java.util.List;
 
-import au.gov.nla.dlir.util.Strings;
+import au.gov.nla.dlir.util.NaturalSort;
 
 public class Chapter implements Comparable<Object> {
 	
@@ -30,7 +30,7 @@ public class Chapter implements Comparable<Object> {
 	    } else {	 
 	        String t1 = (title == null ? "" : title);
 	        String t2 = (chapter.getTitle() == null ? "" : chapter.getTitle());
-	        return Strings.compareNaturalIgnoreCaseAscii(t1, t2);
+	        return NaturalSort.compareNaturalIgnoreCaseAscii(t1, t2);
 	    }
     } 
 	public Integer getStartPageIndex() {
