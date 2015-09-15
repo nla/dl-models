@@ -69,7 +69,7 @@ public class Work  implements Comparable<Object>{
     private String previousSibling;
     private String nextSibling;
     private Boolean isMissingPage = false;
-    private Boolean interactiveIndex = false;
+    private Boolean interactiveIndexAvailable = false;
 
     /**
      * Returns the BibData of this Object or
@@ -550,12 +550,12 @@ public class Work  implements Comparable<Object>{
         this.isMissingPage = isMissingPage;
     }
 
-    public Boolean getInteractiveIndex() {
-        return interactiveIndex;
+    public Boolean getInteractiveIndexAvailable() {
+        return interactiveIndexAvailable;
     }
 
-    public void setInteractiveIndex(Boolean interactiveIndex) {
-        this.interactiveIndex = interactiveIndex;
+    public void setInteractiveIndexAvailable(Boolean interactiveIndexAvailable) {
+        this.interactiveIndexAvailable = interactiveIndexAvailable;
     }
     
 }
