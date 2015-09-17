@@ -7,8 +7,8 @@ import au.gov.nla.dlir.util.NaturalSort;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class RelatedDocument implements Comparable<Object> {
     private String id;
-    private String copyRoleCode;
-    private String copyRoleText;
+    private String copyRole;
+    private String filename;
     private String fileType;
     private Long fileSize;
 
@@ -20,20 +20,20 @@ public class RelatedDocument implements Comparable<Object> {
         this.id = id;
     }
 
-    public String getCopyRoleCode() {
-        return copyRoleCode;
+    public String getCopyRole() {
+        return copyRole;
     }
 
-    public void setCopyRoleCode(String copyRoleCode) {
-        this.copyRoleCode = copyRoleCode;
+    public void setCopyRole(String copyRole) {
+        this.copyRole = copyRole;
     }
 
-    public String getCopyRoleText() {
-        return copyRoleText;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setCopyRoleText(String copyRoleText) {
-        this.copyRoleText = copyRoleText;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public String getFileType() {
