@@ -8,7 +8,7 @@ import au.gov.nla.dlir.util.NaturalSort;
 public class RelatedDocument implements Comparable<Object> {
     private String id;
     private String copyRole;
-    private String filename;
+    private String fileName;
     private String fileType;
     private Long fileSize;
 
@@ -28,12 +28,12 @@ public class RelatedDocument implements Comparable<Object> {
         this.copyRole = copyRole;
     }
 
-    public String getFilename() {
-        return filename;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public String getFileType() {

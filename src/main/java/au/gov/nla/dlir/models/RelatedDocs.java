@@ -8,11 +8,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class RelatedDocs {
     List<RelatedDocument> documents;
    
-    public List<RelatedDocument> getTranscripts() {
+    public List<RelatedDocument> getDocuments() {
         return documents;
     }
 
-    public void setTranscripts(List<RelatedDocument> transcripts) {
-        this.documents = transcripts;
+    public void setDocuments(List<RelatedDocument> documents) {
+        this.documents = documents;
     }
 }
