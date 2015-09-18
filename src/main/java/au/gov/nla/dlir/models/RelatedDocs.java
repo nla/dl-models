@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class RelatedDocs {
-    List<RelatedDocument> documents;
-   
-    public List<RelatedDocument> getDocuments() {
-        return documents;
+    List<RelatedDocument> docs;
+    
+    public List<RelatedDocument> getDocs() {
+        return docs;
     }
 
-    public void setDocuments(List<RelatedDocument> documents) {
-        this.documents = documents;
+    public void setDocs(List<RelatedDocument> documents) {
+        this.docs = documents;
     }
 }
