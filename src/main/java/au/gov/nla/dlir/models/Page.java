@@ -21,6 +21,7 @@ public class Page {
     private String title;
     private String holdingNumber;
     private String commentsExternal;
+    private String bibId;
 
     public String getHoldingNumber() {
         return holdingNumber;
@@ -156,5 +157,13 @@ public class Page {
 
     public void setCommentsExternal(String commentsExternal) {
         this.commentsExternal = commentsExternal;
+    }
+
+    public String getBibId() {
+        return bibId;
+    }
+
+    public void setBibId(String bibId) {
+        this.bibId = bibId;
     }
 }

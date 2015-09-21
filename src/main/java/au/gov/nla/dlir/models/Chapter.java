@@ -15,6 +15,7 @@ public class Chapter implements Comparable<Object> {
 	private List<ExistsOn> existson;
 	private Integer startPageIndex; // starting page number for display
 	private String startPagePid; // starting page pid for display
+	private String bibId;
 	
 	/**
 	 * Specifically used to compare chapters for order
@@ -45,7 +46,6 @@ public class Chapter implements Comparable<Object> {
     public void setStartPagePid(String startPagePid) {
         this.startPagePid = startPagePid;
     }    	
-	
 	
 	public String getId() {
 		return id;
@@ -88,6 +88,12 @@ public class Chapter implements Comparable<Object> {
     }
     public void setSubUnitNo(String subUnitNo) {
         this.subUnitNo = subUnitNo;
+    }
+    public String getBibId() {
+        return bibId;
+    }
+    public void setBibId(String bibId) {
+        this.bibId = bibId;
     } 
 
 }
