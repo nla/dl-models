@@ -4,7 +4,7 @@
   <groupId>au.gov.nla</groupId>
   <artifactId>dl-models</artifactId>
   <packaging>jar</packaging>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.3-SNAPSHOT</version>
   <name>dl-models</name>
   <url>http://maven.apache.org</url>
   <properties>
