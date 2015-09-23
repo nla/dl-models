@@ -1,7 +1,5 @@
 package au.gov.nla.dlir.models;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -11,7 +9,7 @@ public class Acknowledgement {
     private String kindOfSupport;
     private Double weighting;
     private String urlToOriginial;
-    private Date date;
+    private String date; //date of Acknowledgement
     private String orgName;
     private String orgUrl;
     private String orgLogoUrl;
@@ -56,11 +54,11 @@ public class Acknowledgement {
         this.urlToOriginial = urlToOriginial;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
