@@ -17,6 +17,8 @@ public class Parent {
     private String accessConditions = "Unrestricted";
     private String copyrightPolicy;
     private BibData bibData;
+    private Boolean interactiveIndexAvailable = false;
+    
     public String getId() {
         return id;
     }
@@ -107,5 +109,10 @@ public class Parent {
     public void setSubUnitNo(String subUnitNo) {
         this.subUnitNo = subUnitNo;
     }
-
+    public Boolean getInteractiveIndexAvailable() {
+        return interactiveIndexAvailable;
+    }
+    public void setInteractiveIndexAvailable(Boolean interactiveIndexAvailable) {
+        this.interactiveIndexAvailable = interactiveIndexAvailable;
+    }
 }
