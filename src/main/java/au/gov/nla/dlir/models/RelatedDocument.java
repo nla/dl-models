@@ -55,8 +55,8 @@ public class RelatedDocument implements Comparable<Object> {
     @Override
     public int compareTo(Object object) {
         RelatedDocument doc = (RelatedDocument) object;
-        String type1 = (fileType == null) ? "" : fileType;
-        String type2 = (doc.getFileType() == null) ? "" : doc.getFileType();
+        String type1 = (fileName == null) ? "" : fileName;
+        String type2 = (doc.getFileName() == null) ? "" : doc.getFileName();
         return NaturalSort.compareNaturalIgnoreCaseAscii(type1, type2);
     }
 }
