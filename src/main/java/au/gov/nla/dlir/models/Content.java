@@ -22,7 +22,7 @@ public class Content {
 
     private List<String> format;
     private List<String> callnumber;
-    private String edition;
+    private List<String> edition;
     
     @JsonProperty("physical")
     private List<String> physical;   
@@ -397,11 +397,11 @@ public class Content {
 		this.otherAuthorWithRelator = convertToList(value);
 	}
 
-	public String getEdition() {
+	public List<String> getEdition() {
 		return edition;
 	}
 
-	public void setEdition(String edition) {
+	public void setEdition(List<String> edition) {
 		this.edition = edition;
 	}
 
