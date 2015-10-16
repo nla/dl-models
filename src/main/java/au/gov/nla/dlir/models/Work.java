@@ -70,6 +70,8 @@ public class Work  implements Comparable<Object>{
     private String nextSibling;
     private Boolean isMissingPage = false;
     private Boolean interactiveIndexAvailable = false;
+    private String sheetName;
+    private String sheetCreationDate;
 
     /**
      * Returns the BibData of this Object or
@@ -557,5 +559,20 @@ public class Work  implements Comparable<Object>{
     public void setInteractiveIndexAvailable(Boolean interactiveIndexAvailable) {
         this.interactiveIndexAvailable = interactiveIndexAvailable;
     }
-    
+
+    public String getSheetName() {
+        return sheetName;
+    }
+
+    public void setSheetName(String sheetName) {
+        this.sheetName = sheetName;
+    }
+
+    public String getSheetCreationDate() {
+        return sheetCreationDate;
+    }
+
+    public void setSheetCreationDate(String sheetCreationDate) {
+        this.sheetCreationDate = sheetCreationDate;
+    }
 }
