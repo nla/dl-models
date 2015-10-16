@@ -72,6 +72,7 @@ public class Work  implements Comparable<Object>{
     private Boolean interactiveIndexAvailable = false;
     private String sheetName;
     private String sheetCreationDate;
+    private String additionalSeriesStatement;
 
     /**
      * Returns the BibData of this Object or
@@ -574,5 +575,13 @@ public class Work  implements Comparable<Object>{
 
     public void setSheetCreationDate(String sheetCreationDate) {
         this.sheetCreationDate = sheetCreationDate;
+    }
+
+    public String getAdditionalSeriesStatement() {
+        return additionalSeriesStatement;
+    }
+
+    public void setAdditionalSeriesStatement(String additionalSeriesStatement) {
+        this.additionalSeriesStatement = additionalSeriesStatement;
     }
 }
