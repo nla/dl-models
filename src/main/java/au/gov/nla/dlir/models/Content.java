@@ -39,9 +39,7 @@ public class Content {
     private String pi; 
     private List<String> publisher;
     private String title;
-    
-    private String printer;
-    
+        
     private List<String> summary;
     private String reproduction;
     
@@ -403,14 +401,6 @@ public class Content {
 
 	public void setEdition(List<String> edition) {
 		this.edition = edition;
-	}
-
-	public String getPrinter() {
-		return printer;
-	}
-
-	public void setPrinter(String printer) {
-		this.printer = printer;
 	}
 
 	public String getDateUpper() {
