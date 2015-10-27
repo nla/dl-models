@@ -54,6 +54,7 @@ public class Work  implements Comparable<Object>{
     private String digitalStatus;
     private String startDate;
     private String endDate;
+    private String ebookType;
     private List<String> arrangement;
     private List<String> access;
     private List<String> copyPublish;
@@ -484,6 +485,14 @@ public class Work  implements Comparable<Object>{
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
+    }
+
+    public String getEbookTypee() {
+        return ebookType;
+    }
+
+    public void setEebookType(String ebookType) {
+        this.ebookType = ebookType;
     }
 
     public String getEndDate() {
