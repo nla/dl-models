@@ -22,7 +22,7 @@ public class Content {
 
     private List<String> format;
     private List<String> callnumber;
-    private String edition;
+    private List<String> edition;
     
     @JsonProperty("physical")
     private List<String> physical;   
@@ -59,7 +59,7 @@ public class Content {
     private String languageCode;
     
     @JsonProperty("my_parent")
-    private String myParent;
+    private List<String> myParent;
     
     @JsonProperty("publish_date")
     private List<String> publishDates;
@@ -223,12 +223,12 @@ public class Content {
 		this.languageCode = languageCode;
 	}
 
-	public String getMyParent() {
+	public List<String> getMyParent() {
 		return myParent;
 	}
 
-	public void setMyParent(String myParent) {
-		this.myParent = myParent;
+	public void setMyParent(Object myParent) {
+		this.myParent = convertToList(myParent);
 	}
 
 	public String getPublishDate() {
@@ -397,11 +397,11 @@ public class Content {
 		this.otherAuthorWithRelator = convertToList(value);
 	}
 
-	public String getEdition() {
+	public List<String> getEdition() {
 		return edition;
 	}
 
-	public void setEdition(String edition) {
+	public void setEdition(List<String> edition) {
 		this.edition = edition;
 	}
 

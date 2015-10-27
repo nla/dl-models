@@ -71,6 +71,9 @@ public class Work  implements Comparable<Object>{
     private String nextSibling;
     private Boolean isMissingPage = false;
     private Boolean interactiveIndexAvailable = false;
+    private String sheetName;
+    private String sheetCreationDate;
+    private String additionalSeriesStatement;
 
     /**
      * Returns the BibData of this Object or
@@ -487,11 +490,11 @@ public class Work  implements Comparable<Object>{
         this.startDate = startDate;
     }
 
-    public String getEbookTypee() {
+    public String getEbookType() {
         return ebookType;
     }
 
-    public void setEebookType(String ebookType) {
+    public void setEbookType(String ebookType) {
         this.ebookType = ebookType;
     }
 
@@ -566,5 +569,28 @@ public class Work  implements Comparable<Object>{
     public void setInteractiveIndexAvailable(Boolean interactiveIndexAvailable) {
         this.interactiveIndexAvailable = interactiveIndexAvailable;
     }
-    
+
+    public String getSheetName() {
+        return sheetName;
+    }
+
+    public void setSheetName(String sheetName) {
+        this.sheetName = sheetName;
+    }
+
+    public String getSheetCreationDate() {
+        return sheetCreationDate;
+    }
+
+    public void setSheetCreationDate(String sheetCreationDate) {
+        this.sheetCreationDate = sheetCreationDate;
+    }
+
+    public String getAdditionalSeriesStatement() {
+        return additionalSeriesStatement;
+    }
+
+    public void setAdditionalSeriesStatement(String additionalSeriesStatement) {
+        this.additionalSeriesStatement = additionalSeriesStatement;
+    }
 }
