@@ -41,7 +41,6 @@ public class Content {
     private String title;
         
     private List<String> summary;
-    private String reproduction;
     
     private List<String> subject;
     
@@ -411,14 +410,6 @@ public class Content {
 		this.dateUpper = dateUpper;
 	}
 	
-	public String getReproduction() {
-		return reproduction;
-	}
-
-	public void setReproduction(String reproduction) {
-		this.reproduction = reproduction;
-	}
-
 	public List<String> getMyParentId() {
 		return myParentId;
 	}
