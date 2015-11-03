@@ -8,6 +8,7 @@ import au.gov.nla.dlir.util.NaturalSort;
 public class RelatedDocument implements Comparable<Object> {
     private String id;
     private String copyRole;
+    private String externalComments;
     private String fileName;
     private String fileType;
     private Long fileSize;
@@ -58,5 +59,13 @@ public class RelatedDocument implements Comparable<Object> {
         String type1 = (fileName == null) ? "" : fileName;
         String type2 = (doc.getFileName() == null) ? "" : doc.getFileName();
         return NaturalSort.compareNaturalIgnoreCaseAscii(type1, type2);
+    }
+
+    public String getExternalComments() {
+        return externalComments;
+    }
+
+    public void setExternalComments(String externalComments) {
+        this.externalComments = externalComments;
     }
 }
