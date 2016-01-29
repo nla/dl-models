@@ -88,15 +88,6 @@ public class Content {
     @JsonProperty("url_the_work")
     private List<Url> urlTheWork;
     
-    @JsonProperty("url_copy_of")
-    private List<Url> urlCopyOf;
-    
-    @JsonProperty("973_related_record")
-    private String RelatedRecord973;
-    
-    @JsonProperty("973_w")
-    private String field973w;
-    
     @JsonProperty("cited_publisher_place")
     private String citedPublisherPlace;
     
@@ -291,22 +282,6 @@ public class Content {
 
 	public void setPages(Object pages) {
 		this.pages = convertToList(pages);
-	}
-
-	public String getRelatedRecord973() {
-		return RelatedRecord973;
-	}
-
-	public void setRelatedRecord973(String relatedRecord973) {
-		RelatedRecord973 = relatedRecord973;
-	}
-
-	public String getField973w() {
-		return field973w;
-	}
-
-	public void setField973w(String field973w) {
-		this.field973w = field973w;
 	}
 
 	public String getCitedPublisherPlace() {
