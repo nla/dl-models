@@ -17,76 +17,20 @@ public class Content {
 	
     private String id;
 
-    @JsonProperty("my_parent_id")
-    private List<String> myParentId;
-
-    private List<String> format;
     private List<String> callnumber;
-    private List<String> edition;
-    
-    @JsonProperty("physical")
-    private List<String> physical;   
-    
+
     @JsonProperty("description")
     private List<String> description;
     
-    @JsonProperty("pages")
-    private List<String> pages;
-    
-    @JsonProperty("pi")
-    private Object piObj;
-    
-    private String pi; 
     private List<String> publisher;
     private String title;
         
-    private List<String> summary;
-    
-    private List<String> subject;
-    
-    @JsonProperty("date_lower")
-    private String dateLower;
-    
-    @JsonProperty("date_upper")
-    private String dateUpper;
-    
-    private String language;
-    
-    @JsonProperty("language_code")
-    private String languageCode;
-    
-    @JsonProperty("my_parent")
-    private List<String> myParent;
-    
     @JsonProperty("publish_date")
     private List<String> publishDates;
     
     private String publishDate;
     
     private String author;
-    
-    @JsonProperty("other_author")
-    private List<String> otherAuthor;
-    
-    @JsonProperty("author_with_relator")
-    private List<String> authorWithRelator;
-    
-    @JsonProperty("other_author_with_relator")
-    private List<String> otherAuthorWithRelator;
-    
-    @JsonProperty("publisher_place")
-    private List<String> publisherPlace;
-    
-   
-    private String collection;
-    private List<String> notes;
-    
-    @JsonProperty("title_start")
-    private String titleStart;
-   
-    
-    @JsonProperty("url_the_work")
-    private List<Url> urlTheWork;
     
     @JsonProperty("cited_publisher_place")
     private String citedPublisherPlace;
@@ -136,7 +80,6 @@ public class Content {
      */
     @JsonAnySetter
     public void handleUnknown(String key, Object value) {
-      // do something: put to a Map; log a warning, whatever
     }
 
     public String getId() {
@@ -147,13 +90,6 @@ public class Content {
         this.id = id;
     }
 
-    public List<String> getFormat() {
-        return format;
-	}
-
-	public void setFormat(Object value) {
-        this.format = convertToList(value);
-	}
 
 	public List<String> getCallnumber() {
 		return callnumber;
@@ -179,46 +115,6 @@ public class Content {
 		this.title = title;
 	}
 
-	public List<String> getSubject() {
-		return subject;
-	}
-
-	public void setSubject(Object value) {
-		this.subject = convertToList(value);
-	}
-
-	public String getDateLower() {
-		return dateLower;
-	}
-
-	public void setDateLower(String dateLower) {
-		this.dateLower = dateLower;
-	}
-
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-	public String getLanguageCode() {
-		return languageCode;
-	}
-
-	public void setLanguageCode(String languageCode) {
-		this.languageCode = languageCode;
-	}
-
-	public List<String> getMyParent() {
-		return myParent;
-	}
-
-	public void setMyParent(Object myParent) {
-		this.myParent = convertToList(myParent);
-	}
-
 	public String getPublishDate() {
 	    
 	    if (publishDate != null) {
@@ -236,52 +132,12 @@ public class Content {
 		this.publishDate = publishDate;
 	}
 
-	public List<String> getAuthorWithRelator() {
-		return authorWithRelator;
-	}
-
-	public void setAuthorWithRelator(Object value) {
-		this.authorWithRelator = convertToList(value);
-	}
-
 	public List<String> getDescription() {
 		return description;
 	}
 
 	public void setDescription(Object description) {
 		this.description = convertToList(description);
-	}
-
-	public String getCollection() {
-		return collection;
-	}
-
-	public void setCollection(String collection) {
-		this.collection = collection;
-	}
-
-	public List<String> getNotes() {
-		return notes;
-	}
-
-	public void setNotes(Object value) {
-		this.notes = convertToList(value);
-	}
-
-	public String getTitleStart() {
-		return titleStart;
-	}
-
-	public void setTitleStart(String titleStart) {
-		this.titleStart = titleStart;
-	}
-
-	public List<String> getPages() {
-		return pages;
-	}
-
-	public void setPages(Object pages) {
-		this.pages = convertToList(pages);
 	}
 
 	public String getCitedPublisherPlace() {
@@ -345,54 +201,6 @@ public class Content {
 		this.citedTitle = citedTitle;
 	}
 
-	public List<Url> getUrlTheWork() {
-		return urlTheWork;
-	}
-
-	public void setUrlTheWork(List<Url> urlTheWork) {
-		this.urlTheWork = urlTheWork;
-	}
-
-	public List<String> getOtherAuthor() {
-		return otherAuthor;
-	}
-
-	public void setOtherAuthor(Object value) {
-		this.otherAuthor = convertToList(value);
-	}
-
-	public List<String> getOtherAuthorWithRelator() {
-		return otherAuthorWithRelator;
-	}
-
-	public void setOtherAuthorWithRelator(Object value) {
-		this.otherAuthorWithRelator = convertToList(value);
-	}
-
-	public List<String> getEdition() {
-		return edition;
-	}
-
-	public void setEdition(List<String> edition) {
-		this.edition = edition;
-	}
-
-	public String getDateUpper() {
-		return dateUpper;
-	}
-
-	public void setDateUpper(String dateUpper) {
-		this.dateUpper = dateUpper;
-	}
-	
-	public List<String> getMyParentId() {
-		return myParentId;
-	}
-
-	public void setMyParentId(Object value) {
-		this.myParentId = convertToList(value);
-	}
-
     public List<String> getPublishDates() {
         return publishDates;
     }
@@ -417,23 +225,7 @@ public class Content {
         this.publisher = publisher;
     }
 
-    public List<String> getPublisherPlace() {
-        return publisherPlace;
-    }
-
-    public void setPublisherPlace(List<String> publisherPlace) {
-        this.publisherPlace = publisherPlace;
-    }
-
-    public List<String> getSummary() {
-        return summary;
-    }
-
-    public void setSummary(List<String> summary) {
-        this.summary = summary;
-    }
-
-    public String getBioHistory() {        
+    public String getBioHistory() {
         if (bioHistory != null) {
             return bioHistory;
         }
@@ -449,19 +241,6 @@ public class Content {
         this.bioHistory = bioHistory;
     }
 
-    public String getPi() {
-        if (pi != null) {
-            return pi;
-        }     
-    
-        // only populate pi if String not ArrayList<E>
-        if(piObj instanceof String) {
-            pi = (String)piObj;
-        }        
-        
-        return pi;
-    }
-
     public List<String> getBioHistories() {
         return bioHistories;
     }
@@ -469,20 +248,4 @@ public class Content {
     public void setBioHistories(List<String> bioHistories) {
         this.bioHistories = bioHistories;
     }
-
-    public Object getPiObj() {
-        return piObj;
-    }
-
-    public void setPiObj(Object pis) {
-        this.piObj = pis;
-    }
-
-    public List<String> getPhysical() {        
-        return physical;
-    }
-
-    public void setPhysicals(Object physical) {
-        this.physical = convertToList(physical);
-    }	
 }
