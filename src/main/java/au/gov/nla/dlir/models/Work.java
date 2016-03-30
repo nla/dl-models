@@ -593,4 +593,21 @@ public class Work  implements Comparable<Object>{
     public void setAdditionalSeriesStatement(String additionalSeriesStatement) {
         this.additionalSeriesStatement = additionalSeriesStatement;
     }
+    
+    /**
+     * True if the work has a copy matching the supplied copy role.
+     * @param copyRole      the copy role that is being search for
+     * @return true if a copy is found with this copy role
+     */
+    public boolean hasCopy(String copyRole) {
+        if (copyRole == null || getCopies() == null) return false;
+        
+        for (Copies copy : getCopies()) {
+            if (copyRole.equalsIgnoreCase(copy.getCopyrole())) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 }
