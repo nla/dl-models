@@ -596,7 +596,7 @@ public class Work  implements Comparable<Object>{
     
     /**
      * True if the work has a copy matching the supplied copy role.
-     * @param copyRole      the copy role that is being search for
+     * @param copyRole      the copy role to search for
      * @return true if a copy is found with this copy role
      */
     public boolean hasCopy(String copyRole) {
