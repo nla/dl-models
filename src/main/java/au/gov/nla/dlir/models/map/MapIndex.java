@@ -15,6 +15,7 @@ public class MapIndex {
     private boolean hasFlightDiagramCopy;
     private String interactiveHtml;
     private List<Neighbour> navigation;
+    private String collection;
 
     public String getPid() {
         return pid;
@@ -75,5 +76,13 @@ public class MapIndex {
 
     public void setNavigation(List<Neighbour> navigation) {
         this.navigation = navigation;
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 }
