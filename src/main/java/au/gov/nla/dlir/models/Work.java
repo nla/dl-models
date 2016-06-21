@@ -3,6 +3,7 @@ package au.gov.nla.dlir.models;
 import java.util.Date;
 import java.util.List;
 
+import au.gov.nla.dlir.models.bibdata.MarcData;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import au.gov.nla.dlir.util.NaturalSort;
@@ -74,6 +75,7 @@ public class Work  implements Comparable<Object>{
     private String sheetName;
     private String sheetCreationDate;
     private String additionalSeriesStatement;
+    private MarcData marcData;
 
     /**
      * Returns the BibData of this Object or
@@ -87,7 +89,6 @@ public class Work  implements Comparable<Object>{
                 getParent().getBibData() != null) {
             return getParent().getBibData();
         }
-
         return null;
     }
 
@@ -593,7 +594,15 @@ public class Work  implements Comparable<Object>{
     public void setAdditionalSeriesStatement(String additionalSeriesStatement) {
         this.additionalSeriesStatement = additionalSeriesStatement;
     }
-    
+
+    public MarcData getMarcData() {
+        return marcData;
+    }
+
+    public void setMarcData(MarcData marcData) {
+        this.marcData = marcData;
+    }
+
     /**
      * True if the work has a copy matching the supplied copy role.
      * @param copyRole      the copy role to search for

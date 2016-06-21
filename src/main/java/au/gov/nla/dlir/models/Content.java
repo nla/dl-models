@@ -56,6 +56,8 @@ public class Content {
     private List<String> bioHistories;
     
     private String bioHistory;
+
+    private String summary;
     
     /**
      * To cater with instances where an Object could be a 
@@ -247,5 +249,13 @@ public class Content {
 
     public void setBioHistories(List<String> bioHistories) {
         this.bioHistories = bioHistories;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 }

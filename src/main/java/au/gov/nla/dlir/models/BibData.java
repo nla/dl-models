@@ -3,7 +3,7 @@ package au.gov.nla.dlir.models;
 public class BibData {
 	
 	private String source;
-	private Content content;
+	private Content content = new Content();
 
 	public String getSource() {
 		return source;
