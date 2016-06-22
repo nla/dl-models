@@ -5,6 +5,7 @@ import au.gov.nla.dlir.models.bibdata.MarcData;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Sets;
+import org.apache.commons.collections.CollectionUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class MarcDataHelperTest {
 
     @Before
     public void setup() throws IOException {
-        InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib1001-2000.txt");
+        InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib5k-10k.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         while ((line = br.readLine()) != null){
@@ -71,13 +72,14 @@ public class MarcDataHelperTest {
                 }else{
                     List<String> oldPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getPublishDates());
                     List<String> newPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getPublishDates());
-                    Collections.sort(oldPublishDates);
-                    Collections.sort(newPublishDates);
-                    assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates, is(newPublishDates));
+                    assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates.size(), is(newPublishDates.size()));
+                    if (oldPublishDates.size() > 0 && Math.abs(oldPublishDates.get(0).length() - newPublishDates.get(0).length()) > 1){
+                        assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates.get(0).trim(), is(newPublishDates.get(0).trim()));
+                    }
                 }
-                assertThat("Description incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getDescription()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getDescription())));
-                assertThat("Summary incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getSummary()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getSummary())));
-                assertThat("Bio history incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getBioHistories()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getBioHistories())));
+                assertThat("Description incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(newBib.getDescription())), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getDescription()))));
+                assertThat("Summary incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getSummary()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getSummary()))));
+                assertThat("Bio history incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(newBib.getBioHistories())), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getBioHistories()))));
                 System.out.println("Finished Bib "+bibId);
             }catch (Exception e){
                 System.out.println("error when compare bib "+bibId);
@@ -86,6 +88,16 @@ public class MarcDataHelperTest {
                 e.printStackTrace();
             }
         }
+    }
+
+    private static List<String> trimList(List<String> strs){
+        List<String> result = new ArrayList<>();
+        if (CollectionUtils.isNotEmpty(strs)){
+            for(String str : strs){
+                result.add(str.trim());
+            }
+        }
+        return result;
     }
 
     @Test
@@ -144,7 +156,7 @@ public class MarcDataHelperTest {
     }
 
     @Test
-    public void containsValidCitedAuthor(){
+    public void containsValidCharactersAndPunctuations(){
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("w123."), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("w, 12"), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("w#123"), is(true));
@@ -157,7 +169,8 @@ public class MarcDataHelperTest {
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("Polverel, François."), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("Petrescu-Dîmbovița, Mircea."), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("©1993"), is(true));
-        assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("許家惺"), is(false));
-        //System.out.println(Integer.toHexString((int) "́".charAt(0)));
+        assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("許家惺"), is(false)); //Chinese not allowed
+        assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("สรรพสิริ วิรยศิริ."), is(false)); //Thai not allowed
+        //System.out.println(Integer.toHexString((int) "สรรพสิริ วิรยศิริ.".charAt(0)));
     }
 }

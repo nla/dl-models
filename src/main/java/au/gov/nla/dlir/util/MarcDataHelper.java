@@ -7,6 +7,7 @@ import au.gov.nla.dlir.models.bibdata.*;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -80,7 +81,10 @@ public class MarcDataHelper {
         }
         if (CollectionUtils.isNotEmpty(result)) {
             List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
-            content.setAuthor(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ')).get(0));
+            String author = removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ')).get(0).trim();
+            if (StringUtils.isNotBlank(author)){
+                content.setAuthor(author);
+            }
         }
     }
 
@@ -94,7 +98,7 @@ public class MarcDataHelper {
         if (CollectionUtils.isEmpty(result)) {
             result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("111")), Sets.newHashSet('a', 'b'))));
         }
-        result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("700"), Sets.newHashSet('a', 'b'))));
+        result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("700"), Sets.newHashSet('a'))));
         result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("710"), Sets.newHashSet('a', 'b', 'c', 'd', 'e'))));
         result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("711"), Sets.newHashSet('a', 'b'))));
         result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("720"), Sets.newHashSet('a', 'b', 'e'))));
@@ -117,36 +121,48 @@ public class MarcDataHelper {
         List<String> result = new ArrayList<>();
         result.addAll(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("260")), Sets.newHashSet('c')));
         if (CollectionUtils.isEmpty(result)){
-            result.addAll(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("264")), Sets.newHashSet('c')));
+            result.addAll(getDataFieldValueWithReplacements((bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("1", "2", "4"))), Sets.newHashSet('c')));
         }
         if (CollectionUtils.isNotEmpty(result)) {
             String year = result.get(0);
-            content.setCitedYear(extractCitedYear(year));
+            if (StringUtils.isNotBlank(year)){
+                year = extractCitedYear(year);
+                if (StringUtils.isNotBlank(year)){
+                    content.setCitedYear(year);
+                }
+            }
         }
     }
 
     private void populateCitedPublisherName() {
-        List<String> result = getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("260")), Sets.newHashSet('b'));
+        List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("260"), Sets.newHashSet('b'));
         if (CollectionUtils.isEmpty(result)){
-            result.addAll(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("264")), Sets.newHashSet('b')));
+            result.addAll(getDataFieldValueWithReplacements((bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("1", "2", "4"))), Sets.newHashSet('b')));
         }
         if (CollectionUtils.isNotEmpty(result)) {
             String name = result.get(0).replaceAll("[ ]+", " ");
             if (containsValidPublisherName(name)){
                 name = removeLeadingCharacters(name, Sets.newHashSet(',', '.', ' ', ';'));
-                content.setCitedPublisherName(removeTrailingCharacters(name, Sets.newHashSet(',', '.', ' ', ';')));
+                name = removeTrailingCharacters(name, Sets.newHashSet(',', '.', ' ', ';'));
+                if (StringUtils.isNotBlank(name)){
+                    content.setCitedPublisherName(name);
+                }
             }
         }
     }
 
     private void populateCitedPublisherPlace() {
-        List<String> result = getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("260")), Sets.newHashSet('a'));
+        List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("260"), Sets.newHashSet('a'));
         if (CollectionUtils.isEmpty(result)){
-            result.addAll(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("264")), Sets.newHashSet('a')));
+            result.addAll(getDataFieldValueWithReplacements((bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("1", "2", "4"))), Sets.newHashSet('a')));
         }
         if (CollectionUtils.isNotEmpty(result)) {
-            List<String> replaced = removeNonLatinCharacters(result);
-            content.setCitedPublisherPlace(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', ':')).get(0));
+            List<String> replaced = replaceMultipleSpacesWithSingleSpace(removeNonLatinCharacters(result));
+            String place = removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', ':')).get(0);
+            if (StringUtils.isNotBlank(place)){
+                content.setCitedPublisherPlace(place);
+            }
+
         }
     }
 
@@ -155,30 +171,28 @@ public class MarcDataHelper {
         if (CollectionUtils.isNotEmpty(result)) {
             List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
             replaced = removeLeadingCharacters(replaced, Sets.newHashSet('.', ' '));
-            content.setTitle(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';')).get(0));
+            content.setTitle(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', '/')).get(0));
         }
     }
 
     private void populatePublishDates() {
-        List<String> result = getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("260")), Sets.newHashSet('a', 'b', 'c'));
-        if (CollectionUtils.isEmpty(result)){
-            result.addAll(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("1", "4")), Sets.newHashSet('a','b','c')));
-        }
+        List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("260"), Sets.newHashSet('a', 'b', 'c'));
+        result.addAll(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("0", "1", "2", "4")), Sets.newHashSet('a','b','c')));
         if (CollectionUtils.isNotEmpty(result)) {
             List<String> replaced = removeNonLatinCharacters(replaceMultipleSpacesWithSingleSpace(result));
-            content.setPublishDates(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';')));
+            content.setPublishDates(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', '/')));
         }
     }
 
     private void populateDescription() {
-        List<String> result = getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("300")));
+        List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("300"), Sets.newHashSet('a', 'b', 'c', 'e', 'f', 'g'));
         if (CollectionUtils.isNotEmpty(result)) {
             content.setDescription(result);
         }
     }
 
     private void poplulateBioHistory() {
-        List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("545"));
+        List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("545"), null, Sets.newHashSet('u'));
         if (CollectionUtils.isNotEmpty(result)) {
             List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
             content.setBioHistories(replaced);
@@ -205,10 +219,6 @@ public class MarcDataHelper {
 
     private static List<DataField> toList(DataField dataField){
         return dataField != null ? Collections.singletonList(dataField) : new ArrayList<DataField>(0);
-    }
-
-    private static List<String> getDataFieldValueWithReplacements(List<DataField> dataFields){
-        return getDataFieldValueWithReplacements(dataFields, null);
     }
 
     private static List<String> getDataFieldValueWithReplacements(List<DataField> dataFields, Set<Character> includedSubfieldCodes){
@@ -246,7 +256,7 @@ public class MarcDataHelper {
         List<String> result = new ArrayList<>();
         if (CollectionUtils.isNotEmpty(strs)) {
             for (String str : strs) {
-                String tmp = removeTrailingComma(str);
+                String tmp = removeTrailingComma(str).trim();
                 if (!tmp.endsWith(".")) {
                     tmp += ".";
                 }
@@ -281,18 +291,14 @@ public class MarcDataHelper {
         return str;
     }
 
-    private static List<String> removeUnwantedCharactersForPublisherPlaces(List<String> strs){
-        List<String> result = new ArrayList<>();
-        if (CollectionUtils.isNotEmpty(strs)) {
-            for (String str : strs) {
-                result.add(str.replaceAll("[^\\[\\]\\-a-zA-Z0-9.,?();:\\u0027\\u0301-\\u0304\\u0308\\u00e6́ ]", ""));
-            }
-        }
-        return result;
-    }
-
+    /**
+     * CJK (Chinese, Japanese, Korean) characters are considered invalid
+     * @param str
+     * @return
+     */
     protected static boolean containsValidCharactersAndPunctuations(String str){
-        String pattern = "[\\p{IsLatin}\\p{Punct}\\d\\u00A9-\\u00FF\\u2010-\\u201F\\u02B9-\\u02DC\\u0300-\\u030E\\u0323-\\u0338 ]+";
+        //http://jrgraphix.net/research/unicode_blocks.php
+        String pattern = "[\\u0020-\\u036F\\u2000-\\u303F]+";
         return str.matches(pattern);
     }
 
