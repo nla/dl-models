@@ -57,7 +57,7 @@ public class Content {
     
     private String bioHistory;
 
-    private String summary;
+    private List<String> summary;
     
     /**
      * To cater with instances where an Object could be a 
@@ -251,11 +251,11 @@ public class Content {
         this.bioHistories = bioHistories;
     }
 
-    public String getSummary() {
+    public List<String> getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(List<String> summary) {
         this.summary = summary;
     }
 }

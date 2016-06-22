@@ -14,10 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -57,7 +54,11 @@ public class MarcDataHelperTest {
                 if (newBib.getCallnumber() == null){
                     assertThat("Call number incorrect for bib "+bibId, newBib.getCallnumber(), is(oldBib.getCallnumber()));
                 }else{
-                    assertThat("Call number incorrect for bib "+bibId, newBib.getCallnumber().size(), is(oldBib.getCallnumber().size()));
+                    List<String> oldCallNumber = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getCallnumber());
+                    List<String> newCallNumber = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getCallnumber());
+                    Collections.sort(oldCallNumber);
+                    Collections.sort(newCallNumber);
+                    assertThat("Call number incorrect for bib " + bibId, oldCallNumber, is(newCallNumber));
                 }
                 assertThat("Cited author incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getCitedAuthors()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getCitedAuthors())));
                 assertThat("Cited title incorrect for bib "+bibId, newBib.getCitedTitle(), is(oldBib.getCitedTitle()));
@@ -65,10 +66,19 @@ public class MarcDataHelperTest {
                 assertThat("Cited publisher name incorrect for bib "+bibId, newBib.getCitedPublisherName(), is(oldBib.getCitedPublisherName()));
                 assertThat("Cited publisher place incorrect for bib "+bibId, newBib.getCitedPublisherPlace(), is(oldBib.getCitedPublisherPlace()));
                 assertThat("Title incorrect for bib "+bibId, newBib.getTitle(), is(oldBib.getTitle()));
-                assertThat("Publish dates incorrect for bib "+bibId, newBib.getPublishDates(), is(oldBib.getPublishDates()));
-                assertThat("Description incorrect for bib "+bibId, newBib.getDescription(), is(oldBib.getDescription()));
-                assertThat("Summary incorrect for bib "+bibId, newBib.getSummary(), is(oldBib.getSummary()));
+                if (newBib.getPublishDates() == null){
+                    assertThat("Publish dates incorrect for bib "+bibId, newBib.getPublishDates(), is(oldBib.getPublishDates()));
+                }else{
+                    List<String> oldPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getPublishDates());
+                    List<String> newPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getPublishDates());
+                    Collections.sort(oldPublishDates);
+                    Collections.sort(newPublishDates);
+                    assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates, is(newPublishDates));
+                }
+                assertThat("Description incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getDescription()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getDescription())));
+                assertThat("Summary incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getSummary()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getSummary())));
                 assertThat("Bio history incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getBioHistories()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getBioHistories())));
+                System.out.println("Finished Bib "+bibId);
             }catch (Exception e){
                 System.out.println("error when compare bib "+bibId);
                 e.printStackTrace();
@@ -148,6 +158,6 @@ public class MarcDataHelperTest {
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("Petrescu-Dîmbovița, Mircea."), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("©1993"), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("許家惺"), is(false));
-        //System.out.println(Integer.toHexString((int) "©".charAt(0)));
+        //System.out.println(Integer.toHexString((int) "́".charAt(0)));
     }
 }
