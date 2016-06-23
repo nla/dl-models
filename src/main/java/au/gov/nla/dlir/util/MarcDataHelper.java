@@ -96,7 +96,7 @@ public class MarcDataHelper {
             result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("110")), Sets.newHashSet('a', 'b', 'c', 'd', 'e'))));
         }
         if (CollectionUtils.isEmpty(result)) {
-            result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("111")), Sets.newHashSet('a', 'b'))));
+            result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(toList(bibliographyRecord.getFirstDataFieldByTag("111")), Sets.newHashSet('a'))));
         }
         result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("700"), Sets.newHashSet('a'))));
         result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("710"), Sets.newHashSet('a', 'b', 'c', 'd', 'e'))));

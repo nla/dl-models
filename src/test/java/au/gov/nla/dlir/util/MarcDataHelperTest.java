@@ -28,7 +28,7 @@ public class MarcDataHelperTest {
 
     @Before
     public void setup() throws IOException {
-        InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib195k-200k.txt");
+        InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib18k-20k.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         while ((line = br.readLine()) != null){
