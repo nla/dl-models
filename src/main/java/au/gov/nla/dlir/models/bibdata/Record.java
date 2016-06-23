@@ -62,6 +62,14 @@ public class Record {
         return result;
     }
 
+    public static List<DataField> getFirstDataFieldByTagForEachRecord(List<Record> records, String tag){
+        List<DataField> result = new ArrayList<>();
+        for (Record record : records){
+            result.add(record.getFirstDataFieldByTag(tag));
+        }
+        return result;
+    }
+
     public List<DataField> getDataFieldsByTag(String tag){
         List<DataField> result = new ArrayList<>();
         for (DataField item : datafield){

@@ -28,7 +28,7 @@ public class MarcDataHelperTest {
 
     @Before
     public void setup() throws IOException {
-        InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib5k-10k.txt");
+        InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib195k-200k.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         while ((line = br.readLine()) != null){
@@ -72,7 +72,7 @@ public class MarcDataHelperTest {
                 }else{
                     List<String> oldPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getPublishDates());
                     List<String> newPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getPublishDates());
-                    assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates.size(), is(newPublishDates.size()));
+                    assertThat("Publish dates size incorrect for bib " + bibId, oldPublishDates.size(), is(newPublishDates.size()));
                     if (oldPublishDates.size() > 0 && Math.abs(oldPublishDates.get(0).length() - newPublishDates.get(0).length()) > 1){
                         assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates.get(0).trim(), is(newPublishDates.get(0).trim()));
                     }
