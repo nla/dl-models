@@ -21,7 +21,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class MarcDataHelperTest {
-    private static final String CATALOGUE_URL = "http://catalogue.nla.gov.au/Record/{bibId}?view=json_record";
+    private static final String CATALOGUE_URL = "http://staffcat.nla.gov.au/Record/{bibId}?view=json_record";
     private static final String COLLECTION_SERVICE_URL = "http://dl-devel.nla.gov.au/nla-cat/record/{bibId}?format=json&includeSuppressed=false";
 
     private static final List<String> bibIds = new ArrayList<>();
@@ -38,7 +38,6 @@ public class MarcDataHelperTest {
     }
 
     @Test
-    @Ignore
     public void test(){
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
