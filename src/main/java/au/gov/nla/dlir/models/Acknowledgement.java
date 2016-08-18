@@ -8,7 +8,7 @@ public class Acknowledgement {
     private String type;
     private String kindOfSupport;
     private Double weighting;
-    private String urlToOriginial;
+    private String urlToOriginal;
     private String date; //date of Acknowledgement
     private String orgName;
     private String orgUrl;
@@ -46,12 +46,12 @@ public class Acknowledgement {
         this.weighting = weighting;
     }
 
-    public String getUrlToOriginial() {
-        return urlToOriginial;
+    public String getUrlToOriginal() {
+        return urlToOriginal;
     }
 
-    public void setUrlToOriginial(String urlToOriginial) {
-        this.urlToOriginial = urlToOriginial;
+    public void setUrlToOriginal(String urlToOriginal) {
+        this.urlToOriginal = urlToOriginal;
     }
 
     public String getDate() {
