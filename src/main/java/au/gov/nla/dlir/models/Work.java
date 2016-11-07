@@ -76,6 +76,7 @@ public class Work  implements Comparable<Object>{
     private String sheetCreationDate;
     private String additionalSeriesStatement;
     private MarcData marcData;
+    private String expiryDate;
 
     /**
      * Returns the BibData of this Object or
@@ -619,4 +620,12 @@ public class Work  implements Comparable<Object>{
         
         return false;
     }
+
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
 }
