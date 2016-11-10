@@ -11,6 +11,9 @@ import au.gov.nla.dlir.util.NaturalSort;
 public class Work  implements Comparable<Object>{
     
     public static final String ISSUE_DATE_PATTERN = "EEE, dd MMM yyyy";
+    
+    /** Match the simple date format that Jackson uses in Tarkine. */
+    private static final String TARKINE_SIMPLE_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
 
     private String id;  
     private String bibId;
@@ -76,6 +79,7 @@ public class Work  implements Comparable<Object>{
     private String sheetCreationDate;
     private String additionalSeriesStatement;
     private MarcData marcData;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=TARKINE_SIMPLE_DATE_PATTERN)
     private Date expiryDate;
 
     /**
