@@ -3,14 +3,14 @@ package au.gov.nla.dlir.models;
 import java.util.Date;
 import java.util.List;
 
-import au.gov.nla.dlir.models.bibdata.MarcData;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import au.gov.nla.dlir.models.bibdata.MarcData;
 import au.gov.nla.dlir.util.NaturalSort;
 
 public class Work  implements Comparable<Object>{
     
-    public static final String ISSUE_DATE_PATTERN = "EEE, dd MMM yyyy";
+    public static final String DATE_PATTERN = "EEE, dd MMM yyyy";
 
     private String id;  
     private String bibId;
@@ -23,7 +23,7 @@ public class Work  implements Comparable<Object>{
     private String subType;
     private String subUnitType;
     private String subUnitNo = "";
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=ISSUE_DATE_PATTERN)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=DATE_PATTERN)
     private Date issueDate;
     private String holdingNumber;
     private String pid;
@@ -76,6 +76,7 @@ public class Work  implements Comparable<Object>{
     private String sheetCreationDate;
     private String additionalSeriesStatement;
     private MarcData marcData;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=DATE_PATTERN)
     private Date expiryDate;
 
     /**
