@@ -44,10 +44,10 @@ public class Work  implements Comparable<Object>{
     private String sensitiveMaterial;    
     private List<String> sensitiveReason;   
     private String findingAidAvailable;
-    private String representativeWorkAccessConditions = "Unrestricted";
+    private String representativeWorkAccessConditions;
     private Boolean representativeWorkAllowHighResDownload = false;
     private String firstChild;
-    private String firstChildAccessConditions = "Unrestricted";
+    private String firstChildAccessConditions;
     private Boolean firstChildAllowHighResDownload = false;
     private Boolean displayTitlePage = false;
     private String commentsExternal;    
