@@ -79,7 +79,7 @@ public class Work  implements Comparable<Object>{
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=DATE_PATTERN)
     private Date expiryDate;
     private String depositType;
-    private boolean hasOriginalCopy = false;
+    private boolean isOriginalCopyAvaliable = false;
     /**
      * Returns the BibData of this Object or
      * if null returns the BibData of the Parent
@@ -639,13 +639,12 @@ public class Work  implements Comparable<Object>{
         this.depositType = depositType;
     }
 
-    public boolean getHasOriginalCopy() {
-        return hasOriginalCopy;
+    public boolean isOriginalCopyAvaliable() {
+        return isOriginalCopyAvaliable;
     }
 
-    public void setHasOriginalCopy(boolean hasOriginalCopy) {
-        this.hasOriginalCopy = hasOriginalCopy;
+    public void setIsOriginalCopyAvaliable(boolean isOriginalCopyAvaliable) {
+        this.isOriginalCopyAvaliable = isOriginalCopyAvaliable;
     }
-	
-	
+
 }
