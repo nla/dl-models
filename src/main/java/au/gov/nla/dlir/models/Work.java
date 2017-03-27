@@ -78,7 +78,8 @@ public class Work  implements Comparable<Object>{
     private MarcData marcData;
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=DATE_PATTERN)
     private Date expiryDate;
-
+    private String depositType;
+    private boolean hasOriginalCopy = false;
     /**
      * Returns the BibData of this Object or
      * if null returns the BibData of the Parent
@@ -629,4 +630,22 @@ public class Work  implements Comparable<Object>{
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
+
+    public String getDepositType() {
+        return depositType;
+    }
+
+    public void setDepositType(String depositType) {
+        this.depositType = depositType;
+    }
+
+    public boolean getHasOriginalCopy() {
+        return hasOriginalCopy;
+    }
+
+    public void setHasOriginalCopy(boolean hasOriginalCopy) {
+        this.hasOriginalCopy = hasOriginalCopy;
+    }
+	
+	
 }
