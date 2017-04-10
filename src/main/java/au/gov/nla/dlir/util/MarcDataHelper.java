@@ -103,7 +103,6 @@ public class MarcDataHelper {
         result.addAll(removeTrailingCommaWithDotOrAddTrailingDot(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("711"), Sets.newHashSet('a', 'b'))));
         if (CollectionUtils.isNotEmpty(result)) {
             List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
-            replaced = removeNonLatinCharacters(replaced);
             content.setCitedAuthors(replaced);
         }
     }
@@ -122,7 +121,6 @@ public class MarcDataHelper {
         if (CollectionUtils.isEmpty(result)){
             result.addAll(getDataFieldValueWithReplacements((bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("1", "2", "4"))), Sets.newHashSet('c')));
         }
-        result = removeNonLatinCharacters(result);
         if (CollectionUtils.isNotEmpty(result)) {
             String year = result.get(0);
             if (StringUtils.isNotBlank(year)){
@@ -157,12 +155,11 @@ public class MarcDataHelper {
             result.addAll(getDataFieldValueWithReplacements((bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("1", "2", "4"))), Sets.newHashSet('a')));
         }
         if (CollectionUtils.isNotEmpty(result)) {
-            List<String> replaced = replaceMultipleSpacesWithSingleSpace(removeNonLatinCharacters(result));
-            String place = removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', ':')).get(0);
-            if (StringUtils.isNotBlank(place)){
-                content.setCitedPublisherPlace(place);
-            }
-
+            List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
+			String place = removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', ':')).get(0);
+			if (StringUtils.isNotBlank(place)) {
+				content.setCitedPublisherPlace(place);
+			}
         }
     }
 
@@ -179,7 +176,7 @@ public class MarcDataHelper {
         List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("260"), Sets.newHashSet('a', 'b', 'c'));
         result.addAll(getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("264", null, Sets.newHashSet("0", "1", "2", "4")), Sets.newHashSet('a','b','c')));
         if (CollectionUtils.isNotEmpty(result)) {
-            List<String> replaced = removeNonLatinCharacters(replaceMultipleSpacesWithSingleSpace(result));
+            List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
             content.setPublishDates(removeTrailingCharacters(replaced, Sets.newHashSet(',', '.', ' ', ';', '/')));
         }
     }
@@ -202,7 +199,7 @@ public class MarcDataHelper {
     private void populateSummary() {
         List<String> result = getDataFieldValueWithReplacements(bibliographyRecord.getDataFieldsByTag("520"), Sets.newHashSet('a'));
         if (CollectionUtils.isNotEmpty(result)) {
-            List<String> replaced = removeNonLatinCharacters(replaceMultipleSpacesWithSingleSpace(result));
+            List<String> replaced = replaceMultipleSpacesWithSingleSpace(result);
             content.setSummary(replaced);
         }
     }
@@ -261,18 +258,6 @@ public class MarcDataHelper {
                     tmp += ".";
                 }
                 result.add(tmp);
-            }
-        }
-        return result;
-    }
-
-    private List<String> removeNonLatinCharacters(List<String> strs) {
-        List<String> result = new ArrayList<>();
-        if (CollectionUtils.isNotEmpty(strs)){
-            for (String str : strs){
-                if (containsValidCharactersAndPunctuations(str)){
-                    result.add(str);
-                }
             }
         }
         return result;
