@@ -80,6 +80,7 @@ public class Work  implements Comparable<Object>{
     private Date expiryDate;
     private String depositType;
     private boolean isOriginalCopyAvaliable = false;
+    private String topLevelCollection;
     /**
      * Returns the BibData of this Object or
      * if null returns the BibData of the Parent
@@ -647,4 +648,11 @@ public class Work  implements Comparable<Object>{
         this.isOriginalCopyAvaliable = isOriginalCopyAvaliable;
     }
 
+    public String getTopLevelCollection() {
+        return topLevelCollection;
+    }
+
+    public void setTopLevelCollection(String topLevelCollection) {
+        this.topLevelCollection = topLevelCollection;
+    }
 }
