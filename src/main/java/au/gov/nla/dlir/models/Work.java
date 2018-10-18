@@ -1,13 +1,12 @@
 package au.gov.nla.dlir.models;
 
+import au.gov.nla.dlir.models.bibdata.MarcData;
+import au.gov.nla.dlir.util.NaturalSort;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import au.gov.nla.dlir.models.bibdata.MarcData;
-import au.gov.nla.dlir.util.NaturalSort;
 
 public class Work  implements Comparable<Object>{
     
@@ -87,6 +86,7 @@ public class Work  implements Comparable<Object>{
     private List<String> accessOnsiteAt = new ArrayList<>();
     private String librariesAustraliaId;
     private String nedReference;
+    private PlaceOfPublication placeOfPublication;
 
     /**
      * Returns the BibData of this Object or
@@ -701,5 +701,13 @@ public class Work  implements Comparable<Object>{
 
     public void setTopLevelCollection(String topLevelCollection) {
         this.topLevelCollection = topLevelCollection;
+    }
+
+    public PlaceOfPublication getPlaceOfPublication() {
+        return placeOfPublication;
+    }
+
+    public void setPlaceOfPublication(PlaceOfPublication placeOfPublication) {
+        this.placeOfPublication = placeOfPublication;
     }
 }
