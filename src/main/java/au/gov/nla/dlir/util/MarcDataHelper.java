@@ -51,6 +51,7 @@ public class MarcDataHelper {
         populateDescription();
         poplulateBioHistory();
         populateSummary();
+        populateStandardIds();
     }
 
     private void populateBibId(){
@@ -58,6 +59,28 @@ public class MarcDataHelper {
         if (controlFieldTag001 != null){
             content.setId(controlFieldTag001.getContent());
         }
+    }
+
+    private void populateStandardIds() {
+        content.setIsbn(getFieldValues("020", "a"));
+        content.setIssn(getFieldValues("022", "a"));
+        content.setIsmn(getFieldValues("024", "a"));
+    }
+
+    private List<String> getFieldValues(String field, String subfield) {
+        List<String> values = new ArrayList<>();
+
+        List<DataField> fields = Record.getDataFieldsByTag(Collections.singletonList(bibliographyRecord), field);
+        if (fields != null) {
+            for (DataField df : fields) {
+                Subfield sf = df.getSubfield(subfield);
+                if (sf != null) {
+                    values.add(sf.getContent());
+                }
+            }
+        }
+
+        return values;
     }
 
     private void populateCallNumber() {

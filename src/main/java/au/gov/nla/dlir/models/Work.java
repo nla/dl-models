@@ -1,12 +1,12 @@
 package au.gov.nla.dlir.models;
 
-import java.util.Date;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import au.gov.nla.dlir.models.bibdata.MarcData;
 import au.gov.nla.dlir.util.NaturalSort;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Work  implements Comparable<Object>{
     
@@ -81,6 +81,14 @@ public class Work  implements Comparable<Object>{
     private String depositType;
     private boolean isOriginalCopyAvaliable = false;
     private String topLevelCollection;
+    private List<String> standardIds = new ArrayList<>();
+    private String ownerLibrary;
+    private List<String> accessOnsiteAt = new ArrayList<>();
+    private String librariesAustraliaId;
+    private String nedReference;
+    private PlaceOfPublication placeOfPublication;
+    private String publisherName;
+
     /**
      * Returns the BibData of this Object or
      * if null returns the BibData of the Parent
@@ -607,6 +615,46 @@ public class Work  implements Comparable<Object>{
         this.marcData = marcData;
     }
 
+    public List<String> getStandardIds() {
+        return standardIds;
+    }
+
+    public void setStandardIds(List<String> standardIds) {
+        this.standardIds = standardIds;
+    }
+
+    public String getOwnerLibrary() {
+        return ownerLibrary;
+    }
+
+    public void setOwnerLibrary(String ownerLibrary) {
+        this.ownerLibrary = ownerLibrary;
+    }
+
+    public List<String> getAccessOnsiteAt() {
+        return accessOnsiteAt;
+    }
+
+    public void setAccessOnsiteAt(List<String> accessOnsiteAt) {
+        this.accessOnsiteAt = accessOnsiteAt;
+    }
+
+    public String getLibrariesAustraliaId() {
+        return librariesAustraliaId;
+    }
+
+    public void setLibrariesAustraliaId(String librariesAustraliaId) {
+        this.librariesAustraliaId = librariesAustraliaId;
+    }
+
+    public String getNedReference() {
+        return nedReference;
+    }
+
+    public void setNedReference(String nedReference) {
+        this.nedReference = nedReference;
+    }
+
     /**
      * True if the work has a copy matching the supplied copy role.
      * @param copyRole      the copy role to search for
@@ -654,5 +702,21 @@ public class Work  implements Comparable<Object>{
 
     public void setTopLevelCollection(String topLevelCollection) {
         this.topLevelCollection = topLevelCollection;
+    }
+
+    public PlaceOfPublication getPlaceOfPublication() {
+        return placeOfPublication;
+    }
+
+    public void setPlaceOfPublication(PlaceOfPublication placeOfPublication) {
+        this.placeOfPublication = placeOfPublication;
+    }
+
+    public String getPublisherName() {
+        return publisherName;
+    }
+
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
     }
 }

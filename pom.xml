@@ -4,14 +4,14 @@
   <groupId>au.gov.nla</groupId>
   <artifactId>dl-models</artifactId>
   <packaging>jar</packaging>
-  <version>1.6.10-SNAPSHOT</version>
+  <version>1.6.12-SNAPSHOT</version>
   <name>dl-models</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <jackson.version>2.2.2</jackson.version>
+    <jackson.version>2.9.7</jackson.version>
     <github.global.server>github</github.global.server>
   </properties>
 

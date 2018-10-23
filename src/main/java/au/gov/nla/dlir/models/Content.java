@@ -58,6 +58,11 @@ public class Content {
     private String bioHistory;
 
     private List<String> summary;
+
+    private List<String> isbn;
+    private List<String> ismn;
+    private List<String> issn;
+
     
     /**
      * To cater with instances where an Object could be a 
@@ -257,5 +262,29 @@ public class Content {
 
     public void setSummary(List<String> summary) {
         this.summary = summary;
+    }
+
+    public List<String> getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(List<String> isbn) {
+        this.isbn = isbn;
+    }
+
+    public List<String> getIsmn() {
+        return ismn;
+    }
+
+    public void setIsmn(List<String> ismn) {
+        this.ismn = ismn;
+    }
+
+    public List<String> getIssn() {
+        return issn;
+    }
+
+    public void setIssn(List<String> issn) {
+        this.issn = issn;
     }
 }
