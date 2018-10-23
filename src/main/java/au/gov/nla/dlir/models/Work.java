@@ -87,6 +87,7 @@ public class Work  implements Comparable<Object>{
     private String librariesAustraliaId;
     private String nedReference;
     private PlaceOfPublication placeOfPublication;
+    private String publisherName;
 
     /**
      * Returns the BibData of this Object or
@@ -709,5 +710,13 @@ public class Work  implements Comparable<Object>{
 
     public void setPlaceOfPublication(PlaceOfPublication placeOfPublication) {
         this.placeOfPublication = placeOfPublication;
+    }
+
+    public String getPublisherName() {
+        return publisherName;
+    }
+
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
     }
 }
