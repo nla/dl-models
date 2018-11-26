@@ -40,6 +40,15 @@ public class DataField {
         this.subfield = subfield;
     }
 
+    public Subfield getSubfield(String code) {
+        for (Subfield s : this.subfield) {
+            if (s.getCode().equalsIgnoreCase(code)) {
+                return s;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "DataField{" +
