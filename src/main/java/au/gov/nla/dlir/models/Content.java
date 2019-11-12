@@ -62,6 +62,8 @@ public class Content {
     private List<String> isbn;
     private List<String> ismn;
     private List<String> issn;
+    private String scale;
+    private String language;
 
     
     /**
@@ -286,5 +288,21 @@ public class Content {
 
     public void setIssn(List<String> issn) {
         this.issn = issn;
+    }
+
+    public String getScale() {
+        return scale;
+    }
+
+    public void setScale(String scale) {
+        this.scale = scale;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
