@@ -64,6 +64,9 @@ public class Content {
     private List<String> issn;
     private String scale;
     private String language;
+    private String series;
+    private String edition;
+    private String issue;
 
     
     /**
@@ -304,5 +307,29 @@ public class Content {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public String getIssue() {
+        return issue;
+    }
+
+    public void setIssue(String issue) {
+        this.issue = issue;
     }
 }

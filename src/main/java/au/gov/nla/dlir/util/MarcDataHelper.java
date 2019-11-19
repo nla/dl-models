@@ -54,6 +54,9 @@ public class MarcDataHelper {
         populateStandardIds();
         populateScale();
         populateLanguage();
+        populateSeries();
+        populateEdition();
+        populateIssue();
     }
 
     private void populateScale() {
@@ -66,6 +69,24 @@ public class MarcDataHelper {
         String value = getFirstDataFieldValueByTagAndSubfield("040", "b");
         if (StringUtils.isNotBlank(value))
             content.setLanguage(value);
+    }
+
+    private void populateSeries() {
+        String value = getFirstDataFieldValueByTagAndSubfield("830", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setSeries(value);
+    }
+
+    private void populateEdition() {
+        String value = getFirstDataFieldValueByTagAndSubfield("250", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setEdition(value);
+    }
+
+    private void populateIssue() {
+        String value = getFirstDataFieldValueByTagAndSubfield("362", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setIssue(value);
     }
 
     private void populateBibId(){
