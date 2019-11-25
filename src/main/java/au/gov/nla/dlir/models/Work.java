@@ -88,6 +88,7 @@ public class Work  implements Comparable<Object>{
     private String nedReference;
     private PlaceOfPublication placeOfPublication;
     private String publisherName;
+    private Boolean allowSearchEngineIndexing = false;
 
     /**
      * Returns the BibData of this Object or
@@ -718,5 +719,13 @@ public class Work  implements Comparable<Object>{
 
     public void setPublisherName(String publisherName) {
         this.publisherName = publisherName;
+    }
+
+    public Boolean getAllowSearchEngineIndexing() {
+        return allowSearchEngineIndexing;
+    }
+
+    public void setAllowSearchEngineIndexing(Boolean allowSearchEngineIndexing) {
+        this.allowSearchEngineIndexing = allowSearchEngineIndexing;
     }
 }
