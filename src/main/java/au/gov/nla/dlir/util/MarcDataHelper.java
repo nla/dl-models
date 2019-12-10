@@ -52,6 +52,41 @@ public class MarcDataHelper {
         poplulateBioHistory();
         populateSummary();
         populateStandardIds();
+        populateScale();
+        populateLanguage();
+        populateSeries();
+        populateEdition();
+        populateIssue();
+    }
+
+    private void populateScale() {
+        String value = getFirstDataFieldValueByTagAndSubfield("255", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setScale(value);
+    }
+
+    private void populateLanguage() {
+        String value = getFirstDataFieldValueByTagAndSubfield("040", "b");
+        if (StringUtils.isNotBlank(value))
+            content.setLanguage(value);
+    }
+
+    private void populateSeries() {
+        String value = getFirstDataFieldValueByTagAndSubfield("830", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setSeries(value);
+    }
+
+    private void populateEdition() {
+        String value = getFirstDataFieldValueByTagAndSubfield("250", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setEdition(value);
+    }
+
+    private void populateIssue() {
+        String value = getFirstDataFieldValueByTagAndSubfield("362", "a");
+        if (StringUtils.isNotBlank(value))
+            content.setIssue(value);
     }
 
     private void populateBibId(){
@@ -425,5 +460,13 @@ public class MarcDataHelper {
 
     public BibData getBibData() {
         return bibData;
+    }
+
+    private String getFirstDataFieldValueByTagAndSubfield(String field, String subfield) {
+        List<String> values = getFieldValues(field, subfield);
+        if (CollectionUtils.isNotEmpty(values)) {
+            return values.get(0);
+        }
+        return null;
     }
 }
