@@ -3,19 +3,22 @@ package au.gov.nla.dlir.models;
 import au.gov.nla.dlir.models.bibdata.MarcData;
 import au.gov.nla.dlir.util.NaturalSort;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Work  implements Comparable<Object>{
-    
+@Getter @Setter
+public class Work implements Comparable<Object> {
+
     public static final String DATE_PATTERN = "EEE, dd MMM yyyy";
 
-    private String id;  
+    private String id;
     private String bibId;
     private String collection;
-    private String creator;   
+    private String creator;
     private String form = ""; // Default as this is critical in delivery
     private String number;
     private String type;
@@ -23,7 +26,7 @@ public class Work  implements Comparable<Object>{
     private String subType;
     private String subUnitType;
     private String subUnitNo = "";
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private Date issueDate;
     private String holdingNumber;
     private String pid;
@@ -41,8 +44,8 @@ public class Work  implements Comparable<Object>{
     private String componentLevel;
     private String recordSource;
     private String representativeWork;
-    private String sensitiveMaterial;    
-    private List<String> sensitiveReason;   
+    private String sensitiveMaterial;
+    private List<String> sensitiveReason;
     private String findingAidAvailable;
     private String representativeWorkAccessConditions;
     private Boolean representativeWorkAllowHighResDownload = false;
@@ -50,7 +53,7 @@ public class Work  implements Comparable<Object>{
     private String firstChildAccessConditions;
     private Boolean firstChildAllowHighResDownload = false;
     private Boolean displayTitlePage = false;
-    private String commentsExternal;    
+    private String commentsExternal;
     private String bibliography;
     private String digitalStatus;
     private String startDate;
@@ -76,7 +79,7 @@ public class Work  implements Comparable<Object>{
     private String sheetCreationDate;
     private String additionalSeriesStatement;
     private MarcData marcData;
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern=DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
     private Date expiryDate;
     private String depositType;
     private boolean isOriginalCopyAvaliable = false;
@@ -89,6 +92,7 @@ public class Work  implements Comparable<Object>{
     private PlaceOfPublication placeOfPublication;
     private String publisherName;
     private Boolean allowSearchEngineIndexing = false;
+    private boolean atomisedInTrove;
 
     /**
      * Returns the BibData of this Object or
@@ -260,6 +264,7 @@ public class Work  implements Comparable<Object>{
     public String getCreator() {
         return creator;
     }
+
     public void setCreator(String creator) {
         this.creator = creator;
     }
@@ -386,10 +391,10 @@ public class Work  implements Comparable<Object>{
 
     @Override
     public int compareTo(Object object) {
-        Work work = (Work)object;
+        Work work = (Work) object;
         String displayOrder1 = (displayOrder == null ? "" : displayOrder);
         String displayOrder2 = (work.getDisplayOrder() == null ? "" : work.getDisplayOrder());
-       return NaturalSort.compareNaturalIgnoreCaseAscii(displayOrder1, displayOrder2);
+        return NaturalSort.compareNaturalIgnoreCaseAscii(displayOrder1, displayOrder2);
     }
 
     public String getDcmWorkPid() {
@@ -658,28 +663,29 @@ public class Work  implements Comparable<Object>{
 
     /**
      * True if the work has a copy matching the supplied copy role.
-     * @param copyRole      the copy role to search for
+     *
+     * @param copyRole the copy role to search for
      * @return true if a copy is found with this copy role
      */
     public boolean hasCopy(String copyRole) {
         if (copyRole == null || getCopies() == null) return false;
-        
+
         for (Copies copy : getCopies()) {
             if (copyRole.equalsIgnoreCase(copy.getCopyrole())) {
                 return true;
             }
         }
-        
+
         return false;
     }
 
-	public Date getExpiryDate() {
-		return expiryDate;
-	}
-	
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
-	}
+    public Date getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(Date expiryDate) {
+        this.expiryDate = expiryDate;
+    }
 
     public String getDepositType() {
         return depositType;
