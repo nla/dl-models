@@ -33,16 +33,17 @@ public class CopyrightStatusResponse {
             case "1.1": 
                 message = "You may copy under some circumstances, for example you may copy a portion for research or study. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying."; 
                 break;
-            case "1.2": 
+            case "1.2":
+                message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying.";
                 break; 
-            case "2.1": 
-                message = "You may copy or order a copy. Contact us for further information about copying."; 
+            case "2.1":
+                message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying.";
                 break;
             case "1.3": 
                 message = "You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Contact us for further information about copying."; 
                 break;
-            case "2.2": 
-                message = "Copyright varies with publication date of each issue. You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying."; 
+            case "2.2":
+                message = "Copyright varies with each issue and article. You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Contact us for further information about copying.  You may copy or order a copy.";
                 break;
             case "3": 
                 break;
