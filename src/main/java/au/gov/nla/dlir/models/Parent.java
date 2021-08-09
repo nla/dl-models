@@ -18,6 +18,7 @@ public class Parent {
     private String copyrightPolicy;
     private BibData bibData;
     private Boolean interactiveIndexAvailable = false;
+    private boolean ocrMetsCopyAvaliable;
     
     public String getId() {
         return id;
