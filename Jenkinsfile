@@ -1,1 +1,1 @@
-nlaBuild steps: this, nlaBuild steps: this, jdk: 'JDK 8'
+nlaBuild steps: this, deployToNexus: true, jdk: 'JDK 8'
