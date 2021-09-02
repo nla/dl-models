@@ -31,7 +31,7 @@ public class CopyrightStatusResponse {
         String message = "";        
         switch (contextMsg) {
             case "1.1": 
-                message = "You may copy under some circumstances, for example you may copy a portion for research or study. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying."; 
+                message = "You may copy under some circumstances, for example you may copy a portion for research or study. Order a copy. Contact us for further information about copying.";
                 break;
             case "1.2":
                 message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying.";
@@ -48,12 +48,13 @@ public class CopyrightStatusResponse {
             case "3": 
                 break;
             case "4": 
-                message = "This collection may have multiple rights owners; If you wish to copy or order copies, Contact us."; 
+                message = "This collection may have multiple rights owners; If you wish to copy or order copies, Contact us.";
                 break;
             case "5": 
                 message = "You may order a copy or use the online copy for research or study; for other uses Contact us."; 
                 break;
             case "6":
+                message = "Contact us for information about copying.";
                 break;
             case "7": 
                 message = "Contact us for information about copying."; 
