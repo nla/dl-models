@@ -83,6 +83,7 @@ public class Work implements Comparable<Object> {
     private Date expiryDate;
     private String depositType;
     private boolean isOriginalCopyAvaliable;
+    private boolean ocrMetsCopyAvaliable;
     private String topLevelCollection;
     private List<String> standardIds = new ArrayList<>();
     private String ownerLibrary;
