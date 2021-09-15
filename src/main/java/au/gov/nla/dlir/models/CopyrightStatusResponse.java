@@ -43,7 +43,7 @@ public class CopyrightStatusResponse {
                 message = "You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Contact us for further information about copying."; 
                 break;
             case "2.2":
-                message = "Copyright varies with each issue and article. You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Contact us for further information about copying.  You may copy or order a copy.";
+                message = "Copyright varies with each issue and article. You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Contact us for further information about copying. You may copy or order a copy.";
                 break;
             case "3": 
                 break;
