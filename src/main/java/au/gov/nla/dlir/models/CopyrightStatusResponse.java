@@ -34,10 +34,10 @@ public class CopyrightStatusResponse {
                 message = "You may copy under some circumstances, for example you may copy a portion for research or study. Order a copy. Contact us for further information about copying.";
                 break;
             case "1.2":
-                message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying.";
+                message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Contact us for further information about copying.";
                 break; 
             case "2.1":
-                message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Order a copy to the extent allowed under fair dealing. Contact us for further information about copying.";
+                message = "The catalogue record indicates that this work is out of copyright. If the work contains any underlying material, such as a script, music or illustration, these may remain in copyright. Contact us for further information about copying.";
                 break;
             case "1.3": 
                 message = "You may have full rights to copy, or may be able to copy only under some circumstances, for example a portion for research or study. Contact us for further information about copying."; 
