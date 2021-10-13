@@ -10,5 +10,5 @@ import lombok.ToString;
 public class Correction {
   private Integer lineNumber;
   private String correctedText;
-  private String beforeLine;
+  private Integer beforeLineNumber;
 }
