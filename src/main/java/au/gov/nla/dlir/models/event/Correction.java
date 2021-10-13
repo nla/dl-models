@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Correction {
+  private String type;
   private Integer lineNumber;
   private String correctedText;
   private Integer beforeLineNumber;
