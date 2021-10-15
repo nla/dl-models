@@ -9,6 +9,7 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper = true)
 public class TextCorrectionMessage extends Payload {
+  private String user;
   private String objId;
   private String copyId;
   private List<Correction> corrections;
