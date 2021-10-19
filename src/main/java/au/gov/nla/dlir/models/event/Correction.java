@@ -16,7 +16,9 @@ public class Correction {
   }
 
   private Type type;
-  private String lineIdentifier;
+  private String lineId;
   private String correctedText;
-  private String beforeLineIdentifier;
+  private String oldText;
+  private String beforeLineId;
+
 }
