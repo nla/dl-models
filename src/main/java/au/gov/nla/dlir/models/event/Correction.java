@@ -19,6 +19,6 @@ public class Correction {
   private String lineId;
   private String correctedText;
   private String oldText;
-  private String beforeLineId;
+  private String afterLineId;
 
 }
