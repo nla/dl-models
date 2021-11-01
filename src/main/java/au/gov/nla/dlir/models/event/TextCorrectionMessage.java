@@ -13,7 +13,6 @@ public class TextCorrectionMessage extends Payload {
 
   private String user;
   private String objId;
-  private String copyId;
   private ArticleType articleType;
   private List<Correction> corrections;
 }
