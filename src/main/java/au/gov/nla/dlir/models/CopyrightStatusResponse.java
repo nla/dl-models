@@ -48,10 +48,10 @@ public class CopyrightStatusResponse {
             case "3": 
                 break;
             case "4": 
-                message = "This collection may have multiple rights owners; If you wish to copy or order copies, Contact us.";
+                message = "This collection may have multiple rights owners; If you wish to order copies, Contact us.";
                 break;
             case "5": 
-                message = "You may order a copy or use the online copy for research or study; for other uses Contact us."; 
+                message = "You may order a copy or use the online copy for research or study; for other uses Contact us.";
                 break;
             case "6":
                 message = "Contact us for information about copying.";
