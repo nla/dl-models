@@ -4,12 +4,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class CorrectionMetadata {
+
+  private static final String DELIMITER = "\\@\\@\\|\\|\\@\\@";
+  private static final String SPATIAL = "^\\[\\d+,\\d+\\]";
+
   private long id;
   private Long articleId;
   private Long articlePartId;
@@ -20,4 +26,18 @@ public class CorrectionMetadata {
   private Long beforeId;
   private Date created;
   private Date updated;
+
+  public String getCleanOldLines() {
+    return Optional.ofNullable(oldLines).map(CorrectionMetadata::cleanText).orElse(null);
+  }
+
+  public String getCleanNewLines() {
+    return Optional.ofNullable(newLines).map(CorrectionMetadata::cleanText).orElse(null);
+  }
+
+  private static String cleanText(final String input) {
+    final StringBuilder sb = new StringBuilder();
+    Arrays.stream(input.split(DELIMITER)).forEach(line -> sb.append(line.replaceFirst(SPATIAL, "")).append("\n"));
+    return sb.toString();
+  }
 }
