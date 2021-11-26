@@ -6,7 +6,7 @@ public class UsernameUtils {
   protected static final String STAFF_PREFIX = "staff:";
   protected static final String OLD_STAFF_PREFIX = "user:";
   protected static final String PUBLIC_USER_PREFIX = "user:public:";
-  protected static final String ANONYMOUS = "*anon*";
+  public static final String ANONYMOUS = "*anon*";
   public static final String ANONYMOUS_DISPLAY = "Anonymous";
 
   private UsernameUtils() {}
