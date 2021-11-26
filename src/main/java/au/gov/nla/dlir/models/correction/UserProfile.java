@@ -16,6 +16,13 @@ public class UserProfile {
   private boolean anonymous;
   private boolean imageAvailable;
 
+  public static UserProfile getAnonymousProfile() {
+    final UserProfile userProfile = new UserProfile();
+    userProfile.setUserId(UsernameUtils.ANONYMOUS);
+    userProfile.setAnonymous(true);
+    return userProfile;
+  }
+
   public String getDisplayName() {
     return anonymous ? UsernameUtils.ANONYMOUS_DISPLAY : UsernameUtils.getDisplayUsername(userId);
   }
