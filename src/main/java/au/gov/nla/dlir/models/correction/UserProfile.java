@@ -1,5 +1,6 @@
 package au.gov.nla.dlir.models.correction;
 
+import au.gov.nla.dlir.util.UsernameUtils;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,4 +12,12 @@ public class UserProfile {
   private boolean biographyPublic;
   private boolean activityPublic;
   private boolean profileImageAvailable;
+
+  private boolean anonymous;
+  private boolean imageAvailable;
+
+  public String getDisplayName() {
+    return UsernameUtils.getDisplayUsername(userId);
+  }
+
 }
