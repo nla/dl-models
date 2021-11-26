@@ -1,8 +1,10 @@
 package au.gov.nla.dlir.models.correction;
 
+import au.gov.nla.dlir.util.UsernameUtils;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -39,5 +41,9 @@ public class CorrectionMetadata {
     final StringBuilder sb = new StringBuilder();
     Arrays.stream(input.split(DELIMITER)).forEach(line -> sb.append(line.replaceFirst(SPATIAL, "")).append("\n"));
     return sb.toString();
+  }
+
+  public String getUserDisplay() {
+    return UsernameUtils.getDisplayUsername(user);
   }
 }
