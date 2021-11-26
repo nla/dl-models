@@ -17,7 +17,7 @@ public class UserProfile {
   private boolean imageAvailable;
 
   public String getDisplayName() {
-    return UsernameUtils.getDisplayUsername(userId);
+    return anonymous ? UsernameUtils.ANONYMOUS_DISPLAY : UsernameUtils.getDisplayUsername(userId);
   }
 
 }
