@@ -17,12 +17,12 @@
 
   <distributionManagement>
     <repository>
-      <id>nla-releases</id>
-      <url>http://dev.nla.gov.au/nexus/content/repositories/nla</url>
+      <id>nla-public</id>
+      <url>https://dev.nla.gov.au/nexus/content/repositories/nla-public</url>
     </repository>
     <snapshotRepository>
       <id>nla-snapshots</id>
-      <url>http://dev.nla.gov.au/nexus/content/repositories/nla-snapshots</url>
+      <url>https://dev.nla.gov.au/nexus/content/repositories/nla-snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
