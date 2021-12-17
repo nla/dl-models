@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class CorrectionMetadataTest {
 
-  private CorrectionMetadata correctionMetadata = new CorrectionMetadata();
+  private final CorrectionMetadata correctionMetadata = new CorrectionMetadata();
 
   @Test
   public void getCleanNullOldLines() {
