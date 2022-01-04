@@ -1,14 +1,12 @@
 package au.gov.nla.dlir.models.correction;
 
 import au.gov.nla.dlir.util.UsernameUtils;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -28,6 +26,7 @@ public class CorrectionMetadata {
   private Long beforeId;
   private Date created;
   private Date updated;
+  private String articleType;
 
   public String getCleanOldLines() {
     return Optional.ofNullable(oldLines).map(CorrectionMetadata::cleanText).orElse(null);
