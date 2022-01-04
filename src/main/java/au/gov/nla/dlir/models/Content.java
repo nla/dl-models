@@ -92,6 +92,7 @@ public class Content {
      */
     @JsonAnySetter
     public void handleUnknown(String key, Object value) {
+      // Ignore unknown values
     }
 
     public String getId() {
@@ -134,7 +135,7 @@ public class Content {
         }
         
         if (publishDates != null && publishDates.size() > 0 && 
-            citedYears != null & citedYears.size() > 0) {
+            citedYears != null && citedYears.size() > 0) {
             return citedYears.get(0);
         }
 		return publishDate;
