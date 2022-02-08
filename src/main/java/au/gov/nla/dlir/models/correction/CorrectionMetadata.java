@@ -7,6 +7,7 @@ import java.util.Optional;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @Setter
@@ -43,6 +44,6 @@ public class CorrectionMetadata {
   }
 
   public String getUserDisplay() {
-    return UsernameUtils.getDisplayUsername(user);
+    return StringUtils.isBlank(user) ? "" : UsernameUtils.getDisplayUsername(user);
   }
 }
