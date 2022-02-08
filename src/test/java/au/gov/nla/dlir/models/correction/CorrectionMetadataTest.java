@@ -18,4 +18,12 @@ public class CorrectionMetadataTest {
     Assert.assertEquals(
         "TTTTTTT \nHONORARY EXECUTIVE COMMITTEE: \n", correctionMetadata.getCleanOldLines());
   }
+
+  @Test
+  public void testNullUserDisplayName() {
+    String displayName = correctionMetadata.getUserDisplay();
+
+    Assert.assertNotNull(displayName);
+    Assert.assertEquals(0, displayName.length());
+  }
 }
