@@ -16,4 +16,5 @@ public class TextCorrectionMessage extends Payload {
   private ArticleType articleType;
   private List<Correction> corrections;
   private String rollbackCorrectionId;
+  private String form;
 }
