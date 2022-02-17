@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class CorrectionMetadataTest {
 
-  private CorrectionMetadata correctionMetadata = new CorrectionMetadata();
+  private final CorrectionMetadata correctionMetadata = new CorrectionMetadata();
 
   @Test
   public void getCleanNullOldLines() {
@@ -17,5 +17,13 @@ public class CorrectionMetadataTest {
     correctionMetadata.setOldLines("[0,0]TTTTTTT @@||@@[0,0]HONORARY EXECUTIVE COMMITTEE: @@||@@");
     Assert.assertEquals(
         "TTTTTTT \nHONORARY EXECUTIVE COMMITTEE: \n", correctionMetadata.getCleanOldLines());
+  }
+
+  @Test
+  public void testNullUserDisplayName() {
+    String displayName = correctionMetadata.getUserDisplay();
+
+    Assert.assertNotNull(displayName);
+    Assert.assertEquals(0, displayName.length());
   }
 }

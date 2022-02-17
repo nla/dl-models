@@ -17,8 +17,12 @@ public class TextCorrectionMessage extends Payload {
   private ArticleType articleType;
   private List<Correction> corrections;
   private String rollbackCorrectionId;
+<<<<<<< HEAD
 
   public boolean isSaveCorrection() {
     return StringUtils.equalsIgnoreCase(getTransaction(), "Save");
   }
+=======
+  private String form;
+>>>>>>> 13b7ec9a1caf5f183d705b8e2ff3da94b3ba4090
 }
