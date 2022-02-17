@@ -4,6 +4,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @Setter
@@ -16,4 +17,8 @@ public class TextCorrectionMessage extends Payload {
   private ArticleType articleType;
   private List<Correction> corrections;
   private String rollbackCorrectionId;
+
+  public boolean isSaveCorrection() {
+    return StringUtils.equalsIgnoreCase(getTransaction(), "Save");
+  }
 }
