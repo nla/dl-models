@@ -4,7 +4,7 @@
   <groupId>au.gov.nla</groupId>
   <artifactId>dl-models</artifactId>
   <packaging>jar</packaging>
-  <version>1.6.15-SNAPSHOT</version>
+  <version>1.6.15-RELEASE</version>
   <name>dl-models</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -18,7 +18,7 @@
   <distributionManagement>
     <repository>
       <id>nla-releases</id>
-      <url>http://dev.nla.gov.au/nexus/content/repositories/nla</url>
+      <url>https://dev.nla.gov.au/nexus/content/repositories/nla-public</url>
     </repository>
     <snapshotRepository>
       <id>nla-snapshots</id>
