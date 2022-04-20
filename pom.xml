@@ -4,7 +4,7 @@
   <groupId>au.gov.nla</groupId>
   <artifactId>dl-models</artifactId>
   <packaging>jar</packaging>
-  <version>1.6.15-SNAPSHOT</version>
+  <version>1.6.17-SNAPSHOT</version>
   <name>dl-models</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -18,7 +18,7 @@
   <distributionManagement>
     <repository>
       <id>nla-releases</id>
-      <url>http://dev.nla.gov.au/nexus/content/repositories/nla</url>
+      <url>https://dev.nla.gov.au/nexus/content/repositories/nla-public</url>
     </repository>
     <snapshotRepository>
       <id>nla-snapshots</id>
@@ -89,6 +89,12 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.12</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

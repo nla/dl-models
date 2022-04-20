@@ -26,7 +26,7 @@ public class Work implements Comparable<Object> {
     private String subType;
     private String subUnitType;
     private String subUnitNo = "";
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATE_PATTERN, locale = "en_AU")
     private Date issueDate;
     private String holdingNumber;
     private String pid;
