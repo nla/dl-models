@@ -80,9 +80,7 @@ public class MarcDataHelperTest {
                 assertThat("Description incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(newBib.getDescription())), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getDescription()))));
                 assertThat("Summary incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getSummary()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getSummary()))));
                 assertThat("Bio history incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(newBib.getBioHistories())), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getBioHistories()))));
-                System.out.println("Finished Bib "+bibId);
             }catch (Exception e){
-                System.out.println("error when compare bib "+bibId);
                 e.printStackTrace();
             }catch (Error e){
                 e.printStackTrace();
@@ -171,6 +169,5 @@ public class MarcDataHelperTest {
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("©1993"), is(true));
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("許家惺"), is(false)); //Chinese not allowed
         assertThat(MarcDataHelper.containsValidCharactersAndPunctuations("สรรพสิริ วิรยศิริ."), is(false)); //Thai not allowed
-        //System.out.println(Integer.toHexString((int) "สรรพสิริ วิรยศิริ.".charAt(0)));
     }
 }
