@@ -1,6 +1,9 @@
 package au.gov.nla.dlir.models.event;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,7 +13,11 @@ import org.apache.commons.lang3.StringUtils;
 @Setter
 @ToString(callSuper = true)
 public class TextCorrectionMessage extends Payload {
-  public enum ArticleType {NEWSPAPER, GAZETTE, DLC;}
+
+  private static final String LINE_PREFIX = "[0,0]";
+  private static final String LINE_SUFFIX = "@@||@@";
+
+  public enum ArticleType {NEWSPAPER, GAZETTE, DLC}
 
   private String user;
   private String objId;
@@ -23,4 +30,17 @@ public class TextCorrectionMessage extends Payload {
     return StringUtils.equalsIgnoreCase(getTransaction(), "Save");
   }
 
+  public String getFormattedOldLines() {
+    return corrections.stream().map(c -> formatLine(c.getOldText())).collect(Collectors.joining());
+  }
+
+  public String getFormattedNewLines() {
+    return corrections.stream().map(c -> formatLine(c.getCorrectedText())).collect(Collectors.joining());
+  }
+
+  private String formatLine(final String line) {
+    return Optional.ofNullable(line)
+            .map(s -> String.format("%s%s%s", LINE_PREFIX, s, LINE_SUFFIX))
+            .orElse(StringUtils.EMPTY);
+  }
 }
