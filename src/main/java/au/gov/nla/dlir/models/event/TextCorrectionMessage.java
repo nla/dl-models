@@ -31,11 +31,11 @@ public class TextCorrectionMessage extends Payload {
   }
 
   public String getFormattedOldLines() {
-    return corrections.stream().map(c -> formatLine(c.getOldText())).collect(Collectors.joining());
+    return corrections != null ? corrections.stream().map(c -> formatLine(c.getOldText())).collect(Collectors.joining()) : null;
   }
 
   public String getFormattedNewLines() {
-    return corrections.stream().map(c -> formatLine(c.getCorrectedText())).collect(Collectors.joining());
+    return corrections != null ? corrections.stream().map(c -> formatLine(c.getCorrectedText())).collect(Collectors.joining()) : null;
   }
 
   private String formatLine(final String line) {

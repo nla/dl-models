@@ -22,11 +22,17 @@ public class TextCorrectionMessageTest {
   }
 
   @Test
+  public void getFormattedOldLinesNullCorrection() {
+    Assert.assertNull(textCorrectionMessage.getFormattedOldLines());
+  }
+
+  @Test
   public void getFormattedNullOldLines() {
     correction1.setOldText(null);
     textCorrectionMessage.setCorrections(Arrays.asList(correction1));
     Assert.assertEquals("", textCorrectionMessage.getFormattedOldLines());
   }
+
 
   @Test
   public void getFormattedNewLines() {
@@ -35,6 +41,11 @@ public class TextCorrectionMessageTest {
     correction3.setCorrectedText("deleted line");
     textCorrectionMessage.setCorrections(Arrays.asList(correction1, correction2, correction3));
     Assert.assertEquals("[0,0]@@||@@[0,0]changed line@@||@@[0,0]deleted line@@||@@", textCorrectionMessage.getFormattedNewLines());
+  }
+
+  @Test
+  public void getFormattedNewLinesNullCorrections() {
+    Assert.assertNull(textCorrectionMessage.getFormattedNewLines());
   }
 
   @Test
