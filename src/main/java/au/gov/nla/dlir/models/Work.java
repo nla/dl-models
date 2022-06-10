@@ -94,6 +94,8 @@ public class Work implements Comparable<Object> {
     private String publisherName;
     private Boolean allowSearchEngineIndexing = false;
     private boolean atomisedInTrove;
+    private String partnerHoldingNumber;
+    private String partnerHoldingNuc;
 
     /**
      * Returns the BibData of this Object or
