@@ -96,6 +96,9 @@ public class Work implements Comparable<Object> {
     private boolean atomisedInTrove;
     private String partnerHoldingNumber;
     private String partnerHoldingNuc;
+    private List<String> partnerNucs =new ArrayList<>();
+    private List<Long> projectIds = new ArrayList<>();
+    private List<Long> parentProjectIds =new ArrayList<>();
 
     /**
      * Returns the BibData of this Object or
