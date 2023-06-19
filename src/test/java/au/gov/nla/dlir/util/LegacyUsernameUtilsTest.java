@@ -1,26 +1,26 @@
 package au.gov.nla.dlir.util;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class LegacyUsernameUtilsTest {
     @Test
     public void usernameIsNull() {
-        Assert.assertNull(LegacyUsernameUtils.getLegacyUsername(null));
+        Assertions.assertNull(LegacyUsernameUtils.getLegacyUsername(null));
     }
 
     @Test
     public void usernameContainsUserColon() {
-        Assert.assertEquals("user:gru", LegacyUsernameUtils.getLegacyUsername("user:gru"));
+        Assertions.assertEquals("user:gru", LegacyUsernameUtils.getLegacyUsername("user:gru"));
     }
 
     @Test
     public void usernameContainsStaff() {
-        Assert.assertEquals("user:gru", LegacyUsernameUtils.getLegacyUsername("staff:gru"));
+        Assertions.assertEquals("user:gru", LegacyUsernameUtils.getLegacyUsername("staff:gru"));
     }
 
     @Test
     public void usernameNotContainStaff() {
-        Assert.assertEquals("user:public:gru", LegacyUsernameUtils.getLegacyUsername("gru"));
+        Assertions.assertEquals("user:public:gru", LegacyUsernameUtils.getLegacyUsername("gru"));
     }
 }

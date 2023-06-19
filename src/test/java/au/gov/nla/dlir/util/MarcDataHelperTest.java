@@ -1,15 +1,9 @@
 package au.gov.nla.dlir.util;
 
-import au.gov.nla.dlir.models.Content;
-import au.gov.nla.dlir.models.bibdata.MarcData;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Sets;
-import org.apache.commons.collections.CollectionUtils;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.springframework.web.client.RestTemplate;
+import org.apache.commons.collections4.CollectionUtils;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,8 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MarcDataHelperTest {
     private static final String CATALOGUE_URL = "http://staffcat.nla.gov.au/Record/{bibId}?view=json_record";
@@ -26,7 +20,7 @@ public class MarcDataHelperTest {
 
     private static final List<String> bibIds = new ArrayList<>();
 
-    @Before
+    @BeforeEach
     public void setup() throws IOException {
         InputStream is = ClassLoader.getSystemResourceAsStream("bibid/bib1-5k.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -37,56 +31,6 @@ public class MarcDataHelperTest {
         br.close();
     }
 
-    @Ignore
-    @Test
-    public void test(){
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-        for (String bibId: bibIds){
-            try{
-                String catalogueString = new RestTemplate().getForObject(CATALOGUE_URL.replace("{bibId}", bibId), String.class);
-                Content oldBib = mapper.readValue(catalogueString, Content.class);
-                String collectionServiceString = new RestTemplate().getForObject(COLLECTION_SERVICE_URL.replace("{bibId}", bibId), String.class);
-                MarcData marcData = mapper.readValue(collectionServiceString, MarcData.class);
-                Content newBib = new MarcDataHelper(marcData).getBibData().getContent();
-                assertThat(newBib.getId(), is(oldBib.getId()));
-                assertThat("Author incorrect for bib "+bibId, newBib.getAuthor(), is(oldBib.getAuthor()));
-                if (newBib.getCallnumber() == null){
-                    assertThat("Call number incorrect for bib "+bibId, newBib.getCallnumber(), is(oldBib.getCallnumber()));
-                }else{
-                    List<String> oldCallNumber = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getCallnumber());
-                    List<String> newCallNumber = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getCallnumber());
-                    Collections.sort(oldCallNumber);
-                    Collections.sort(newCallNumber);
-                    assertThat("Call number incorrect for bib " + bibId, oldCallNumber, is(newCallNumber));
-                }
-                assertThat("Cited author incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getCitedAuthors()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getCitedAuthors())));
-                assertThat("Cited title incorrect for bib "+bibId, newBib.getCitedTitle(), is(oldBib.getCitedTitle()));
-                assertThat("Cited year incorrect for bib "+bibId, newBib.getCitedYear(), is(oldBib.getCitedYear()));
-                assertThat("Cited publisher name incorrect for bib "+bibId, newBib.getCitedPublisherName(), is(oldBib.getCitedPublisherName()));
-                assertThat("Cited publisher place incorrect for bib "+bibId, newBib.getCitedPublisherPlace(), is(oldBib.getCitedPublisherPlace()));
-                assertThat("Title incorrect for bib "+bibId, newBib.getTitle(), is(oldBib.getTitle()));
-                if (newBib.getPublishDates() == null){
-                    assertThat("Publish dates incorrect for bib "+bibId, newBib.getPublishDates(), is(oldBib.getPublishDates()));
-                }else{
-                    List<String> oldPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(oldBib.getPublishDates());
-                    List<String> newPublishDates = MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getPublishDates());
-                    assertThat("Publish dates size incorrect for bib " + bibId, oldPublishDates.size(), is(newPublishDates.size()));
-                    if (oldPublishDates.size() > 0 && Math.abs(oldPublishDates.get(0).length() - newPublishDates.get(0).length()) > 1){
-                        assertThat("Publish dates incorrect for bib " + bibId, oldPublishDates.get(0).trim(), is(newPublishDates.get(0).trim()));
-                    }
-                }
-                assertThat("Description incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(newBib.getDescription())), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getDescription()))));
-                assertThat("Summary incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(newBib.getSummary()), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getSummary()))));
-                assertThat("Bio history incorrect for bib "+bibId, MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(newBib.getBioHistories())), is(MarcDataHelper.replaceMultipleSpacesWithSingleSpace(trimList(oldBib.getBioHistories()))));
-            }catch (Exception e){
-                e.printStackTrace();
-            }catch (Error e){
-                e.printStackTrace();
-            }
-        }
-    }
 
     private static List<String> trimList(List<String> strs){
         List<String> result = new ArrayList<>();

@@ -1,7 +1,8 @@
 package au.gov.nla.dlir.models.event;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -18,19 +19,19 @@ public class TextCorrectionMessageTest {
     correction2.setOldText("changed line");
     correction3.setOldText("deleted line");
     textCorrectionMessage.setCorrections(Arrays.asList(correction1, correction2, correction3));
-    Assert.assertEquals("[0,0]@@||@@[0,0]changed line@@||@@[0,0]deleted line@@||@@", textCorrectionMessage.getFormattedOldLines());
+    Assertions.assertEquals("[0,0]@@||@@[0,0]changed line@@||@@[0,0]deleted line@@||@@", textCorrectionMessage.getFormattedOldLines());
   }
 
   @Test
   public void getFormattedOldLinesNullCorrection() {
-    Assert.assertNull(textCorrectionMessage.getFormattedOldLines());
+    Assertions.assertNull(textCorrectionMessage.getFormattedOldLines());
   }
 
   @Test
   public void getFormattedNullOldLines() {
     correction1.setOldText(null);
     textCorrectionMessage.setCorrections(Arrays.asList(correction1));
-    Assert.assertEquals("", textCorrectionMessage.getFormattedOldLines());
+    Assertions.assertEquals("", textCorrectionMessage.getFormattedOldLines());
   }
 
 
@@ -40,19 +41,19 @@ public class TextCorrectionMessageTest {
     correction2.setCorrectedText("changed line");
     correction3.setCorrectedText("deleted line");
     textCorrectionMessage.setCorrections(Arrays.asList(correction1, correction2, correction3));
-    Assert.assertEquals("[0,0]@@||@@[0,0]changed line@@||@@[0,0]deleted line@@||@@", textCorrectionMessage.getFormattedNewLines());
+    Assertions.assertEquals("[0,0]@@||@@[0,0]changed line@@||@@[0,0]deleted line@@||@@", textCorrectionMessage.getFormattedNewLines());
   }
 
   @Test
   public void getFormattedNewLinesNullCorrections() {
-    Assert.assertNull(textCorrectionMessage.getFormattedNewLines());
+    Assertions.assertNull(textCorrectionMessage.getFormattedNewLines());
   }
 
   @Test
   public void getFormattedNullNewLines() {
     correction1.setCorrectedText(null);
     textCorrectionMessage.setCorrections(Arrays.asList(correction1));
-    Assert.assertEquals("", textCorrectionMessage.getFormattedNewLines());
+    Assertions.assertEquals("", textCorrectionMessage.getFormattedNewLines());
   }
 
 }

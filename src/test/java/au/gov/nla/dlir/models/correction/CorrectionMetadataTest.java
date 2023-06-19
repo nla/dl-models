@@ -1,7 +1,7 @@
 package au.gov.nla.dlir.models.correction;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class CorrectionMetadataTest {
 
@@ -9,13 +9,13 @@ public class CorrectionMetadataTest {
 
   @Test
   public void getCleanNullOldLines() {
-    Assert.assertNull(correctionMetadata.getCleanOldLines());
+    Assertions.assertNull(correctionMetadata.getCleanOldLines());
   }
 
   @Test
   public void getCleanOldLines() {
     correctionMetadata.setOldLines("[0,0]TTTTTTT @@||@@[0,0]HONORARY EXECUTIVE COMMITTEE: @@||@@");
-    Assert.assertEquals(
+    Assertions.assertEquals(
         "TTTTTTT \nHONORARY EXECUTIVE COMMITTEE: \n", correctionMetadata.getCleanOldLines());
   }
 
@@ -23,7 +23,7 @@ public class CorrectionMetadataTest {
   public void testNullUserDisplayName() {
     String displayName = correctionMetadata.getUserDisplay();
 
-    Assert.assertNotNull(displayName);
-    Assert.assertEquals(0, displayName.length());
+    Assertions.assertNotNull(displayName);
+    Assertions.assertEquals(0, displayName.length());
   }
 }

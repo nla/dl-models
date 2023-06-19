@@ -1,7 +1,5 @@
 package au.gov.nla.dlir.models.bibdata;
 
-import org.apache.commons.collections.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
