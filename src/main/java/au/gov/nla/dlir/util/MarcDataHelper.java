@@ -6,7 +6,7 @@ import au.gov.nla.dlir.models.Content;
 import au.gov.nla.dlir.models.bibdata.*;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
