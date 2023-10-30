@@ -99,18 +99,73 @@ public class MarcDataHelper {
     private void populateStandardIds() {
         content.setIsbn(getFieldValues("020", "a"));
         content.setIssn(getFieldValues("022", "a"));
-        content.setIsmn(getFieldValues("024", "a"));
+        content.setIsmn(getFieldValues("024", "a", "2"));
+        content.setOtherStandardIds(getOtherStandardIds());
     }
 
     private List<String> getFieldValues(String field, String subfield) {
+        return getFieldValues(field, subfield, null);
+    }
+
+    private List<String> getFieldValues(String field, String subfield, String firstIndicator) {
         List<String> values = new ArrayList<>();
 
         List<DataField> fields = Record.getDataFieldsByTag(Collections.singletonList(bibliographyRecord), field);
         if (fields != null) {
             for (DataField df : fields) {
                 Subfield sf = df.getSubfield(subfield);
-                if (sf != null) {
+                if (sf != null && (firstIndicator == null || firstIndicator.equals(df.getInd1()))) {
                     values.add(sf.getContent());
+                }
+            }
+        }
+
+        return values;
+    }
+
+    private List<String> getOtherStandardIds() {
+        // Tag 024, all firstIndicator except 2 which is used for ISMN
+        String field = "024";
+        String standardSubfield = "a";
+        String sourceSubfield = "2";
+
+        List<String> values = new ArrayList<>();
+
+        List<DataField> fields = Record.getDataFieldsByTag(Collections.singletonList(bibliographyRecord), field);
+        if (fields != null) {
+            for (DataField df : fields) {
+                Subfield sf = df.getSubfield(standardSubfield);
+                if (sf != null) {
+                    String label = null;
+                    String firstIndicator = (df.getInd1() != null) ? df.getInd1() : "";
+                    switch (firstIndicator) {
+                        case "0":
+                            label = "ISRC";
+                            break;
+                        case "1":
+                            label = "UPC";
+                            break;
+                        case "2":
+                            // Skip it - for ISMN
+                            break;
+                        case "3":
+                            label = "IAN";
+                            break;
+                        case "4":
+                            label = "SICI";
+                            break;
+                        case "7":
+                        case "8":
+                            Subfield sf2 = df.getSubfield(sourceSubfield);
+                            label = (sf2 != null) ? sf2.getContent() : "Other";
+                            break;
+                        default:
+                            label = "Other";
+                            break;
+                    }
+                    if (label != null) {
+                        values.add(sf.getContent() + " (" + label + ")");
+                    }
                 }
             }
         }

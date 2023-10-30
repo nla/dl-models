@@ -62,6 +62,7 @@ public class Content {
     private List<String> isbn;
     private List<String> ismn;
     private List<String> issn;
+    private List<String> otherStandardIds;
     private String scale;
     private String language;
     private String series;
@@ -292,6 +293,14 @@ public class Content {
 
     public void setIssn(List<String> issn) {
         this.issn = issn;
+    }
+
+    public List<String> getOtherStandardIds() {
+        return otherStandardIds;
+    }
+
+    public void setOtherStandardIds(List<String> otherStandardIds) {
+        this.otherStandardIds = otherStandardIds;
     }
 
     public String getScale() {
