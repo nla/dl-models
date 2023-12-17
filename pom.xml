@@ -23,7 +23,7 @@
     </repository>
     <snapshotRepository>
       <id>nla-snapshots</id>
-      <url>http://dev.nla.gov.au/nexus/content/repositories/nla-snapshots</url>
+      <url>https://dev.nla.gov.au/nexus/content/repositories/nla-snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
@@ -121,11 +121,11 @@
   <repositories>
     <repository>
       <id>nla-public-releases</id>
-      <url>http://maven.nla.gov.au/releases</url>
+      <url>https://maven.nla.gov.au/releases</url>
     </repository>
     <repository>
       <id>nla-public-snapshots</id>
-      <url>http://maven.nla.gov.au/snapshots</url>
+      <url>https://maven.nla.gov.au/snapshots</url>
     </repository>
   </repositories>
 
